@@ -2,7 +2,7 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
-ENTITY pipeFD IS
+ENTITY pipeDE IS
 	PORT (
 		--INPUTS
 		--clock
@@ -38,9 +38,9 @@ ENTITY pipeFD IS
 		ALUSrcE: OUT STD_LOGIC;
 		RegDstE: OUT STD_LOGIC;
 	);
-END pipeFD;
+END pipeDE;
 
-ARCHITECTURE arch_pipe of pipeFD IS
+ARCHITECTURE arch_pipe of pipeDE IS
 BEGIN
 
 END arch_pipe;
