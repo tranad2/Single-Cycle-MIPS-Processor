@@ -7,6 +7,7 @@ ENTITY program_counter IS
 	PORT(
 		reset: IN STD_LOGIC;
 		clk: IN STD_LOGIC;
+		stallF: IN STD_LOGIC;
 		o: OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	);
 END program_counter;
