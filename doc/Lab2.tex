@@ -1,0 +1,148 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{tikz-timing}
+
+\lstdefinelanguage{VHDL}{
+  morekeywords={
+    library,use,all,ENTITY,IS,PORT,IN,OUT,end,architecture,of,
+    begin,and, ARCHITECTURE, IF, THEN, SIGNAL,END, PROCESS
+  },
+  morecomment=[l]--
+}
+
+\usepackage{xcolor}
+\colorlet{keyword}{blue!100!black!80}
+\colorlet{comment}{green!90!black!90}
+\lstdefinestyle{vhdl}{
+  language     = VHDL,
+  basicstyle   = \ttfamily\scriptsize,
+  keywordstyle = \color{keyword}\bfseries\ttfamily,
+  commentstyle = \color{comment}\ttfamily,	
+  tabsize=1
+}
+
+\renewcommand{\lstlistingname}{Code}
+
+% Default margins are too wide all the way around. I reset them here
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+\setlength{\oddsidemargin}{.125in}
+\setlength{\textwidth}{6.25in}
+
+
+%\let\oldenumerate\enumerate
+%\renewcommand{\enumerate}{
+  %\oldenumerate
+  %\setlength{\itemsep}{1pt}
+  %\setlength{\parskip}{0pt}
+  %\setlength{\parsep}{0pt}
+%}
+
+
+\begin{document}
+\title{Organization of Digital Computer Lab \\ EECS112L/CSE 132L}
+\author{\textbf{Assignment 2 }\\ \textbf{Single-Cycle MIPS Processor - Datapath + Control} \\ \\
+Prepared by: Team Big Test Icicles \\ \\ Student name: \\ Michael Herrera \\ Kevin Ngo \\ Alexander Tran \\ Franklin Hool \\ \\ Student ID: \\ 47378920 \\ 25092065 \\ 64197583 \\ 71351119 \\ \\ 
+EECS Department\\ Henry Samueli School of Engineering \\ University of California, Irvine \\ \\
+{January, 24, 2016}} 
+
+
+\date{}
+\maketitle
+
+
+\section{Design}
+
+	\subsection{Processor}
+	The processor is the top-level block of the design. It is responsible for connecting the instruction memory, register file, data memory, ALU, program counter, and controller together in order to create a MIPS processor.  
+	
+	\subsection{Program Counter}
+	The PC is used to tell the processor what instruction to read inside of the instruction memory. After each clock cycle, it is incremented by 1 in order for the next instruction to be read. 
+	
+	\subsection{Instruction Memory}
+	The instruction memory is the block that contains the instructions that will be performed by the processor. It is preloaded with instructions such as \textbf{add}, \textbf{sub}, \textbf{and}, and \textbf{or}. The instructions are preloaded for testing since that is the only way for the processor to receive instructions in this design.
+	
+	\subsection{Register File}
+	The register file holds an array of registers which are used for reading and writing data. It is used for every operation of this simple MIPS processor. 
+	
+	\subsection{ALU}
+	The ALU takes in 2 inputs, A and B, and computes either arithmetic or logical operations with them and sends the result to the output. A is a 32-bit vector from the register file, while B can either be a 32-bit vector from the register file for an R-type instruction or an immediate value from instruction memory for an I-type instruction.
+	
+	\subsection{Data Memory}
+	The data memory is where data is written to and stored. The address is calculated by the ALU, and the data being written to this address is from the register file. This block is used for \textbf{lw} and \textbf{sw} operations. 
+	
+ \subsection{Controller}
+	The controller is needed to determine which blocks are enabled for a given instruction since different instructions may have datapaths. For example, an \textbf{add} operation datapath differs from \textbf{lw} operation datapath because \text{add} does not need to access the data memory.
+		
+\section{Testing}
+To test the MIPS processor, we first tested the individual components if possible. We tested the ALU with a testbench that had static inputs \textbf{A\_in} and \textbf{B\_in} that produced values for outputs \textbf{O\_out}, \textbf{Branch\_out}, and \textbf{Jump\_out}. The operations tested were \textbf{add}, \textbf{sub}, \textbf{and}, \textbf{or}, \textbf{xor}, \textbf{nor}, \textbf{slt}, \textbf{bltz}, \textbf{bgez}, \textbf{jump}, \textbf{beq}, \textbf{bne}, \textbf{blez}, and \textbf{bgtz}. For this assignment, we were only required to have basic computations, so the control operations only produce outputs rather than change the location of memory of the program.
+
+\\ \\
+\begin{figure}[!ht]
+	\centering
+		\includegraphics[width=1\textwidth]{ALU_waveform.png}
+		\caption{ALU waveform}
+\end{figure}
+\\ \\
+
+To test the register file, we first tested it with \textbf{rst\_s} set to \textbf{1}  and \textbf{we} set to \textbf{0} to see if the read data and write data is equal to 0, and then tested it with \textbf{rst\_s} set to \textbf{0}  and \textbf{we} set to \textbf{1} to see that the read data from the given read address was written to the given write address in the testbench.
+
+\\ \\
+\begin{figure}[!ht]
+	\centering
+		\includegraphics[width=1\textwidth]{regfile_waveform.jpg}
+		\caption{Register file waveform}
+\end{figure}
+\\ \\
+
+To test the program counter, we simply just had the clock run for a few cycles and watched the output value increase by 1 for each cycle.
+
+\\ \\
+\begin{figure}[!ht]
+	\centering
+		\includegraphics[width=1\textwidth]{pc_waveform.png}
+		\caption{Program counter waveform}
+\end{figure}
+\\ \\
+
+To test the controller, we gave it opcodes for each case and looked at the resulting enable bit outputs. We tested opcodes \textbf{000000}, \textbf{100011}, and \textbf{101011}.
+
+\\ \\
+\begin{figure}[!ht]
+	\centering
+		\includegraphics[width=1\textwidth]{control_waveform.png}
+		\caption{Controller waveform}
+\end{figure}
+\\ \\
+
+Finally, after extensive portmap debugging, we connected all of the blocks together to form the processor. It computes preloaded instructions from the instruction memory, which are chosen by the incrementing program counter. The instruction is then decoded and moved through the register file, where the data continues through its corresponding datapath. The preloaded instructions, in order, are:
+\begin{enumerate}
+	\item add R3, R1, R2
+	\item sub R3, R1, R2
+	\item and R3, R1, R2
+	\item or R3, R1, R2
+	\item xor R3, R1, R2
+	\item nor R3, R1, R2
+	\item slt R1, R2, R3
+	\item sw R2, 20(R1)
+	\item lw R2, 20(R1)
+\end{enumerate}
+
+\\ \\
+\begin{figure}[!ht]
+	\centering
+		\includegraphics[width=1\textwidth]{processor_waveform.png}
+		\caption{Processor waveform}
+\end{figure}
+\\ \\
+ 
+\section{Bugs}
+Our testing for the processor is not extensive due to time constraints. Therefore, we are not able to discern any bugs at its current state. If more time was available, the processor could be further tested by comparing every resulting bit to its expected bit at every output to verify that they match up completely to the MIPS architecture's logic. 
+\end{document}
+
