@@ -26,7 +26,11 @@ component alu
             Branch_out      : OUT std_logic
         );
 end component alu; 
-
+component and_gate IS 
+	( IN1 : in STD_LOGIC; -- AND gate input 
+	IN2 : in STD_LOGIC; -- AND gate input 
+	OUT1 : out STD_LOGIC); -- AND gate output 
+end component;
 component regfile
 	GENERIC (	NBIT : INTEGER := 32;
                 NSEL : INTEGER := 5
@@ -501,7 +505,7 @@ MW: pipeMW port map
 		);
 	
 	temp6<= std_logic_vector(unsigned(PC_OUTPUT)+1);
--- Multiplexer 4 for Add and AND gate
+	-- Multiplexer 4 for Add and AND gate
 	Mult4: multiplexer_32 port map
 		(
 		in0=>temp6,
@@ -519,5 +523,12 @@ MW: pipeMW port map
 		sel=>jump_out_1
 		);
 
+	Adder: and_gate port map
+		( 
+		IN1=>branch_1,
+		IN2=>branch_out_1,
+		OUT1=>add_out_1	
+		);
+	
 
 end pcArch;
