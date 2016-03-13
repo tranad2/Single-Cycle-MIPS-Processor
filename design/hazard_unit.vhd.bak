@@ -1,0 +1,75 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+
+entity hazard_unit is
+
+	port(
+		--Logic Inputs
+		Branch: 	in std_logic;						--Branch control
+		reg_writeM: in std_logic;						--EX/MEM.RegWrite
+		reg_writeW: in std_logic;						--MEM/WB.RegWrite
+		reg_writeE:	in std_logic;
+		MemToRegE: 	in std_logic;						--Asserted for lw instruction
+		MemToRegM:	in std_logic;						--Asserted for branch instruction
+		
+		RegSourceD:	in std_logic_vector(5 DOWNTO 0);
+		RegTargetD: in std_logic_vector(5 DOWNTO 0);
+		rse: 		in std_logic_vector(5 DOWNTO 0);	--ID/EX.RegisterRs
+		rte: 		in std_logic_vector(5 DOWNTO 0);	--ID/EX.RegisterRt
+		rdm: 		in std_logic_vector(5 DOWNTO 0);	--EX/MEM.RegisterRd
+		rdw: 		in std_logic_vector(5 DOWNTO 0);	--MEM/WB.RegisterRd
+		
+		--Logic Outputs
+		forwardAE: 	out std_logic_vector(1 DOWNTO 0);
+		forwardBE: 	out std_logic_vector(1 DOWNTO 0);
+		forwardAD:	out std_logic_vector(1 DOWNTO 0);
+		forwardBD:	out std_logic_vector(1 DOWNTO 0);
+		stallIF: 	out std_logic;
+		stallID: 	out std_logic;
+		flushE: 	out std_logic
+	);
+end hazard_unit;
+
+architecture behavior of hazard_unit is
+begin
+	process(rse, rte, rdm, rdw, reg_writeM, reg_writeW)
+	begin
+		--Execution Hazard
+		if((reg_writeM = '1') and (rdm /= "000000") and (rdm = rse)) then
+			forwardAE <= "10";
+		elsif((reg_writeM = '1') and (rdm /= "000000") and (rdm = rte)) then
+			forwardBE <= "10";	
+			
+		--Memory Hazard
+		elsif((reg_writeW = '1') and (rdw /= "000000") and (rdw = rse)) then
+			forwardAE <= "01";
+		elsif((reg_writeW = '1') and (rdw /= "000000") and (rdw = rte)) then
+			forwardBE <= "01";
+		
+		--Stall hazard for LW instruction
+		elsif((MemToRegE = '1') and (RegSourceD = rte) or (RegTargetD = rte)) then
+			stallIF <= '1';
+			stallID <= '1';
+			flushE 	<= '1';
+		
+		--Stall hazard for branch instruction
+		elsif(Branch = '1') then
+			if((reg_writeE = '1') and (reg_writeE = RegSourceD) or (reg_writeE = RegTargetD)) then
+				stallIF <= '1';
+				stallID <= '1';
+				flushE 	<= '1';
+			elsif((MemToRegM = '1') and (reg_writeM = RegSourceD) or (reg_writeM = RegTargetD))then
+				stallIF <= '1';
+				stallID <= '1';
+				flushE 	<= '1';
+			end if;
+		else
+			forwardAE <= "00";
+			forwardBE <= "00";
+			stallIF <= '0';
+			stallID <= '0';
+			flushE 	<= '0';		
+		end if;
+	end process;
+end behavior;
