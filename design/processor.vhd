@@ -112,6 +112,7 @@ component ControlUnit
 		MemWrite: OUT STD_LOGIC;
 		MUX_MemToReg: OUT STD_LOGIC;
 		Branch: OUT STD_LOGIC;
+		Jump: OUT STD_LOGIC;
 		ALUSrc: OUT STD_LOGIC;
 		RegDst: OUT STD_LOGIC;
 		RegWrite: OUT STD_LOGIC
@@ -233,7 +234,7 @@ component hazard_unit
 end component;
 
 signal Branch_out_1, MemRead_1, MemWrite_1, MTM_1, Branch_1, ALUSrc_1, RegDst_1, RegWrite_1, FF_2b_o_br, add_out_1, jump_out_1:std_LOGIC;
-signal dataIO_1, O_out_1,rdata_1_1, rdata_2_1,  dataO_1, PC_Output,Mult1_Output , Mult2_Output, SignImmD_O, SE_OUTPUT, O_Out_2:std_logic_vector (31 DOWNTO 0);  
+signal dataIO_1, O_out_1,rdata_1_1, rdata_2_1,  dataO_1, PC_Output,Mult1_Output , Mult2_Output, SignImmD_O,  O_Out_2:std_logic_vector (31 DOWNTO 0);  
 signal ALUOp_1: std_logic_vector (5 DOWNTO 0);
 signal Mult3_Output, WriteRegE_O: std_logic_vector (4 DOWNTO 0);
 --PIPEFD SIGNAL
@@ -269,6 +270,7 @@ begin
 		MemRead=>MemRead_1, 
 		MUX_MemToReg=>MTM_1, 
 		Branch=>Branch_1, 
+		Jump=>Jump_Out_1,
 		ALUSrc=>ALUSrc_1, 
 		RegDst=>RegDst_1,
 	    RegWrite=>RegWrite_1,
