@@ -16,9 +16,9 @@ entity hazard_unit is
 		RtD:			in std_logic_vector(4 downto 0);
 		RtE:			in std_logic_vector(4 downto 0);
 		RsE:			in std_logic_vector(4 downto 0);
-		RegWriteW: 		in std_logic_vector(4 downto 0);
-		RegWriteM:		in std_logic_vector(4 downto 0);
-		RegWriteE:		in std_logic_vector(4 downto 0);
+		RegWriteW: 		in std_logic;
+		RegWriteM:		in std_logic;
+		RegWriteE:		in std_logic;
 		WriteRegM:		in std_logic_vector(4 downto 0);
 		WriteRegE:		in std_logic_vector(4 downto 0);
 		
@@ -39,15 +39,15 @@ begin
 	process(Branch, MemToRegE, MemToRegM, RsD, RtD, RtE, RsE, RegWriteW, RegWriteM, RegWriteE, WriteRegE, WriteRegM)
 	begin
 		--Execution Hazard
-		if((RsE = "00001") and (RegWriteM /= "00000") and (RsE = WriteRegM)) then
+		if((RsE = "00001") and (RegWriteM /= '0') and (RsE = WriteRegM)) then
 			forwardAE <= "10";
-		elsif((RtE = "00001") and (RegWriteM /= "00000") and (RtE = WriteRegM)) then
+		elsif((RtE = "00001") and (RegWriteM /= '0') and (RtE = WriteRegM)) then
 			forwardBE <= "10";	
 			
 		--Memory Hazard
-		elsif((RsE = "00001") and (RegWriteW /= "00000") and (RsE = RegWriteW)) then
+		elsif((RsE = "00001") and (RegWriteW /= '0') and (RsE = WriteRegM)) then
 			forwardAE <= "01";
-		elsif((RtE = "00001") and (RegWriteW /= "00000") and (RtE = RegWriteW)) then
+		elsif((RtE = "00001") and (RegWriteW /= '0') and (RtE = WriteRegM)) then
 			forwardBE <= "01";
 		
 		--Stall hazard for LW instruction
@@ -57,7 +57,7 @@ begin
 			flushE 	<= '1';
 		--Stall hazard for branch instruction
 		elsif(Branch = '1') then
-			if((RegWriteE = "00001") and ((WriteRegE = RsD) or (WriteRegE = RtD))) then
+			if((RegWriteE = '1') and ((WriteRegE = RsD) or (WriteRegE = RtD))) then
 				stallIF <= '1';
 				stallID <= '1';
 				flushE 	<= '1';
