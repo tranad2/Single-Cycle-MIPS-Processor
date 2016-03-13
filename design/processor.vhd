@@ -331,7 +331,7 @@ begin
 	--MULTIPLEXER 2 for RAM->RegFile
 	MULT2: multiplexer_32 port map
 		(
-		in0=>dataO_Out, 
+		in0=>dataO_1, 
 		in1=>O_out_1, 
 		Output=>Mult2_Output, 
 		sel=>MTM_1
