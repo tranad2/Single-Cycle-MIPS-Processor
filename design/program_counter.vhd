@@ -16,12 +16,14 @@ ARCHITECTURE behaviorial OF Program_Counter IS
 	SIGNAL temp: STD_LOGIC_VECTOR(31 DOWNTO 0) := (others=>'0');
 BEGIN
 
-	PROCESS(reset, clk)
+	PROCESS(reset, clk, stallF)
 	BEGIN
 		IF reset = '1' THEN --Resets on reset flag
 			o <= "00000000000000000000000000000000";
 		ELSIF clk'event and clk = '1' THEN 
 			o <= temp;
+		END IF;
+		IF stallF = '0' THEN
 			temp <= temp + "00000000000000000000000000000001";
 		END IF;
 	END PROCESS;
