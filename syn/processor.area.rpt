@@ -1,0 +1,83 @@
+Warning: duplicate option '-nosplit' overrides previous value. (CMD-018)
+Warning: Design 'processor' has '3' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : area
+Design : processor
+Version: J-2014.09-SP4
+Date   : Sun Mar 13 14:22:04 2016
+****************************************
+
+Library(s) Used:
+
+    saed32lvt_tt1p05vn40c (File: /users/ugrad2/2012/spring/pooriam/libraries/saed32lvt_tt1p05vn40c.db)
+
+Number of ports:                            2
+Number of nets:                           577
+Number of cells:                           17
+Number of combinational cells:              0
+Number of sequential cells:                 3
+Number of macros/black boxes:               0
+Number of buf/inv:                          0
+Number of references:                      17
+
+Combinational area:               1811.538434
+Buf/Inv area:                      201.790337
+Noncombinational area:            1213.791771
+Macro/Black Box area:                0.000000
+Net Interconnect area:             724.809754
+
+Total cell area:                  3025.330205
+Total area:                       3750.139959
+
+Information: This design contains black box (unknown) components. (RPT-8)
+
+The above information was reported from the logical library. The following are from the physical library:
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  ---------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-     Noncombi-  Black-
+                                  Total      Total    national   national   boxes   Design
+--------------------------------  ---------  -------  ---------  ---------  ------  ---------------------
+processor                         3025.3302    100.0     0.0000     0.0000  0.0000  processor
+ALU_1                              997.7693     33.0   997.7693     0.0000  0.0000  alu_0
+BOT_3_MUX                          285.9120      9.5   123.2598   162.6522  0.0000  mux_3to1_1
+BOT_MUX                             84.3758      2.8    84.3758     0.0000  0.0000  multiplexer_32_4
+Control                            120.4643      4.0    74.7183    45.7459  0.0000  ControlUnit
+EM                                 257.7020      8.5     0.0000   257.7020  0.0000  pipeEM
+HazardUnit                         175.6135      5.8   150.1991    25.4144  0.0000  hazard_unit
+MW                                 436.1111     14.4     0.0000   436.1111  0.0000  pipeMW
+Mult3                                8.8950      0.3     8.8950     0.0000  0.0000  multiplexer_5_0
+Mult_5                              13.9779      0.5    13.9779     0.0000  0.0000  multiplexer_5_1
+PC                                 179.1715      5.9    55.6575   123.5140  0.0000  program_counter_o31_0
+PIPE_MW_MULT                        86.9172      2.9    86.9172     0.0000  0.0000  multiplexer_32_3
+ROM_1                               92.5084      3.1    92.5084     0.0000  0.0000  rom
+SE                                   0.0000      0.0     0.0000     0.0000  0.0000  sign_extender
+TOP_3_MUX                          285.9120      9.5   123.2598   162.6522  0.0000  mux_3to1_0
+--------------------------------  ---------  -------  ---------  ---------  ------  ---------------------
+Total                                                 1811.5384  1213.7918  0.0000
+
+
+Area of detected synthetic parts
+--------------------------------
+  No DW parts to report!
+
+Estimated area of ungrouped synthetic parts
+-------------------------------------------
+                                      Estimated  Perc. of
+  Module              Implem.  Count       Area cell area
+  ------------------- -------  ----- ---------- ---------
+  DP_OP_22J1_122_5665     str      2   448.5776     14.8%
+  DW01_inc            apparch      2   155.4351      5.1%
+  DW_cmp              apparch     11   248.9069      8.2%
+  ------------------- -------  ----- ---------- ---------
+  DP_OP Subtotal:                  2   448.5776     14.8%
+  Total:                          15   852.9195     28.2%
+
+Subtotal of datapath(DP_OP) cell area:  448.5776  14.8%  (estimated)
+Total synthetic cell area:              852.9195  28.2%  (estimated)
+
+1

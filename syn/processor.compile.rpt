@@ -1,0 +1,335 @@
+Warning: Design 'processor' has '4' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | J-2014.09-DWBB_201409.4 |     *     |
+| Licensed DW Building Blocks        | J-2014.09-DWBB_201409.4 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 128 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Information: Building the design 'regfile' instantiated from design 'processor' with
+	the parameters "NBIT=32,NSEL=5". (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/regfile.vhd:24: Initial values for signals/variables are not supported for synthesis by default. They are ignored. (VHD-7)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/regfile.vhd:35: Processes containing more than one 'if' statement that tests an event expression are not supported. (ELAB-413)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'ram'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/ram.vhd:18: The initial value for signal 'MATRIX1' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/ram.vhd:28: Processes containing more than one 'if' statement that tests an event expression are not supported. (ELAB-413)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'pipeFD'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:15: The initial value for signal 'dataIO_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:22: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:22: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:22: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+*** Presto compilation terminated with 3 errors. ***
+Information: Building the design 'pipeDE'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:44: The initial value for signal 'rdata_1_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:45: The initial value for signal 'rdata_2_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:46: The initial value for signal 'Rs_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:47: The initial value for signal 'Rt_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:48: The initial value for signal 'Rd_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:49: The initial value for signal 'SignImm_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:50: The initial value for signal 'RegWrite_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:51: The initial value for signal 'MemtoReg_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:52: The initial value for signal 'MemWrite_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:53: The initial value for signal 'ALUControl_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:54: The initial value for signal 'ALUSrc_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:55: The initial value for signal 'RegDst_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+*** Presto compilation terminated with 3 errors. ***
+Warning: Unable to resolve reference 'regfile' in 'processor'. (LINK-5)
+Warning: Unable to resolve reference 'ram' in 'processor'. (LINK-5)
+Warning: Unable to resolve reference 'pipeFD' in 'processor'. (LINK-5)
+Warning: Unable to resolve reference 'pipeDE' in 'processor'. (LINK-5)
+Loaded alib file './alib-52/saed32lvt_tt1p05vn40c.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'processor'
+ Implement Synthetic for 'processor'.
+  Processing 'alu_0'
+Information: Added key list 'DesignWare' to design 'alu_0'. (DDB-72)
+ Implement Synthetic for 'alu_0'.
+  Processing 'rom'
+  Processing 'pipeEM'
+  Processing 'pipeMW'
+  Processing 'program_counter_o31_0'
+ Implement Synthetic for 'program_counter_o31_0'.
+  Processing 'ControlUnit'
+  Processing 'mux_3to1_0'
+ Implement Synthetic for 'mux_3to1_0'.
+  Processing 'hazard_unit'
+Information: Added key list 'DesignWare' to design 'hazard_unit'. (DDB-72)
+Information: In design 'hazard_unit', the register 'stallIF_reg' is removed because it is merged to 'stallID_reg'. (OPT-1215)
+Information: In design 'hazard_unit', the register 'flushE_reg' is removed because it is merged to 'stallID_reg'. (OPT-1215)
+  Processing 'multiplexer_32_0'
+  Processing 'multiplexer_5_0'
+  Processing 'sign_extender'
+  Processing 'and_gate'
+Information: Building the design 'regfile' instantiated from design 'processor' with
+	the parameters "NBIT=32,NSEL=5". (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/regfile.vhd:24: Initial values for signals/variables are not supported for synthesis by default. They are ignored. (VHD-7)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/regfile.vhd:35: Processes containing more than one 'if' statement that tests an event expression are not supported. (ELAB-413)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'ram'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/ram.vhd:18: The initial value for signal 'MATRIX1' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/ram.vhd:28: Processes containing more than one 'if' statement that tests an event expression are not supported. (ELAB-413)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'pipeFD'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:15: The initial value for signal 'dataIO_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:22: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:22: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:22: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+*** Presto compilation terminated with 3 errors. ***
+Information: Building the design 'pipeDE'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:44: The initial value for signal 'rdata_1_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:45: The initial value for signal 'rdata_2_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:46: The initial value for signal 'Rs_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:47: The initial value for signal 'Rt_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:48: The initial value for signal 'Rd_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:49: The initial value for signal 'SignImm_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:50: The initial value for signal 'RegWrite_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:51: The initial value for signal 'MemtoReg_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:52: The initial value for signal 'MemWrite_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:53: The initial value for signal 'ALUControl_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:54: The initial value for signal 'ALUSrc_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:55: The initial value for signal 'RegDst_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+*** Presto compilation terminated with 3 errors. ***
+Warning: Unable to resolve reference 'regfile' in 'processor'. (LINK-5)
+Warning: Unable to resolve reference 'ram' in 'processor'. (LINK-5)
+Warning: Unable to resolve reference 'pipeFD' in 'processor'. (LINK-5)
+Warning: Unable to resolve reference 'pipeDE' in 'processor'. (LINK-5)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'PMT3_LVT' in the library 'saed32lvt_tt1p05vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_LVT' in the library 'saed32lvt_tt1p05vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_LVT' in the library 'saed32lvt_tt1p05vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_LVT' in the library 'saed32lvt_tt1p05vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_LVT' in the library 'saed32lvt_tt1p05vn40c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_LVT' in the library 'saed32lvt_tt1p05vn40c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+Information: Removing unused design 'multiplexer_32_0'. (OPT-1055)
+Information: Removing unused design 'and_gate'. (OPT-1055)
+Information: Removing unused design 'multiplexer_32_1'. (OPT-1055)
+Information: Removing unused design 'multiplexer_32_2'. (OPT-1055)
+Information: Removing unused design 'multiplexer_32_5'. (OPT-1055)
+
+Threshold voltage group cell usage:
+>> saed32cell_lvt 100.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: Added key list 'DesignWare' to design 'processor'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'program_counter_o31_0'. (DDB-72)
+Information: Updating design information... (UID-85)
+  Mapping Optimization (Phase 1)
+Information: Removing unused design 'alu_1'. (OPT-1055)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:09    3786.9      0.00       0.0       0.0                           2767508992.0000
+    0:00:09    3786.9      0.00       0.0       0.0                           2767508992.0000
+    0:00:09    3786.9      0.00       0.0       0.0                           2767508992.0000
+    0:00:09    3786.9      0.00       0.0       0.0                           2767508992.0000
+  Re-synthesis Optimization (Phase 1)
+  Re-synthesis Optimization (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:09    3740.1      0.00       0.0       2.0                           2708521472.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_lvt 100.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+
+
+  Beginning Design Rule Fixing  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:09    3746.2      0.00       0.0       0.2                           2670628864.0000
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+    0:00:09    3746.4      0.00       0.0       0.0                           2670687232.0000
+    0:00:09    3746.4      0.00       0.0       0.0                           2670687232.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:09    3746.4      0.00       0.0       0.0                           2670687232.0000
+    0:00:10    3746.4      0.00       0.0       0.0                           2670687232.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_lvt 100.00%
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:10    3746.4      0.00       0.0       0.0                           2670687232.0000
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:10    3744.9      0.00       0.0       0.0                           2670614016.0000
+    0:00:10    3912.0      0.00       0.0       0.0                           2811614208.0000
+    0:00:10    3912.0      0.00       0.0       0.0                           2811614208.0000
+    0:00:11    3744.0      0.00       0.0       0.0                           2671431168.0000
+    0:00:11    3744.0      0.00       0.0       0.0                           2671431168.0000
+    0:00:11    3750.1      0.00       0.0       2.1                           2673110528.0000
+Loading db file '/users/ugrad2/2012/spring/pooriam/libraries/saed32lvt_tt1p05vn40c.db'
+Loading db file '/users/ugrad2/2012/spring/pooriam/libraries/saed32sram_tt1p05vn40c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: Building the design 'regfile' instantiated from design 'processor' with
+	the parameters "NBIT=32,NSEL=5". (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/regfile.vhd:24: Initial values for signals/variables are not supported for synthesis by default. They are ignored. (VHD-7)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/regfile.vhd:35: Processes containing more than one 'if' statement that tests an event expression are not supported. (ELAB-413)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'ram'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/ram.vhd:18: The initial value for signal 'MATRIX1' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/ram.vhd:28: Processes containing more than one 'if' statement that tests an event expression are not supported. (ELAB-413)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'pipeDE'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:44: The initial value for signal 'rdata_1_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:45: The initial value for signal 'rdata_2_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:46: The initial value for signal 'Rs_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:47: The initial value for signal 'Rt_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:48: The initial value for signal 'Rd_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:49: The initial value for signal 'SignImm_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:50: The initial value for signal 'RegWrite_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:51: The initial value for signal 'MemtoReg_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:52: The initial value for signal 'MemWrite_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:53: The initial value for signal 'ALUControl_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:54: The initial value for signal 'ALUSrc_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:55: The initial value for signal 'RegDst_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+*** Presto compilation terminated with 3 errors. ***
+Warning: Unable to resolve reference 'regfile' in 'processor'. (LINK-5)
+Warning: Unable to resolve reference 'ram' in 'processor'. (LINK-5)
+Warning: Unable to resolve reference 'pipeDE' in 'processor'. (LINK-5)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated black box outputs. (PWR-428)
+1

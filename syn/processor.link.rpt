@@ -1,0 +1,46 @@
+
+  Linking design 'processor'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (13 designs)              /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/processor.db, etc
+  saed32lvt_tt1p05vn40c (library) /users/ugrad2/2012/spring/pooriam/libraries/saed32lvt_tt1p05vn40c.db
+  saed32sram_tt1p05vn40c (library) /users/ugrad2/2012/spring/pooriam/libraries/saed32sram_tt1p05vn40c.db
+  dw_foundation.sldb (library) /ecelib/linware/synopsys15/dc/libraries/syn/dw_foundation.sldb
+
+Information: Building the design 'regfile' instantiated from design 'processor' with
+	the parameters "NBIT=32,NSEL=5". (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/regfile.vhd:24: Initial values for signals/variables are not supported for synthesis by default. They are ignored. (VHD-7)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/regfile.vhd:35: Processes containing more than one 'if' statement that tests an event expression are not supported. (ELAB-413)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'ram'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/ram.vhd:18: The initial value for signal 'MATRIX1' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/ram.vhd:28: Processes containing more than one 'if' statement that tests an event expression are not supported. (ELAB-413)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'pipeFD'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:15: The initial value for signal 'dataIO_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:22: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:22: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:22: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+*** Presto compilation terminated with 3 errors. ***
+Information: Building the design 'pipeDE'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:44: The initial value for signal 'rdata_1_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:45: The initial value for signal 'rdata_2_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:46: The initial value for signal 'Rs_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:47: The initial value for signal 'Rt_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:48: The initial value for signal 'Rd_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:49: The initial value for signal 'SignImm_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:50: The initial value for signal 'RegWrite_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:51: The initial value for signal 'MemtoReg_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:52: The initial value for signal 'MemWrite_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:53: The initial value for signal 'ALUControl_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:54: The initial value for signal 'ALUSrc_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:55: The initial value for signal 'RegDst_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+*** Presto compilation terminated with 3 errors. ***
+Warning: Unable to resolve reference 'regfile' in 'processor'. (LINK-5)
+Warning: Unable to resolve reference 'ram' in 'processor'. (LINK-5)
+Warning: Unable to resolve reference 'pipeFD' in 'processor'. (LINK-5)
+Warning: Unable to resolve reference 'pipeDE' in 'processor'. (LINK-5)
+0

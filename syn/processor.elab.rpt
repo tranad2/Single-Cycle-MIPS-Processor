@@ -1,0 +1,175 @@
+Warning: Detected use of obsolete/unsupported feature.  The following
+	will not be available in a future release of the application:
+	elaborate -update. Use plain elaborate instead (CMD-100)
+Loading db file '/ecelib/linware/synopsys15/dc/libraries/syn/gtech.db'
+Loading db file '/ecelib/linware/synopsys15/dc/libraries/syn/standard.sldb'
+  Loading link library 'saed32lvt_tt1p05vn40c'
+  Loading link library 'saed32sram_tt1p05vn40c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'processor'.
+Information: Building the design 'ControlUnit'. (HDL-193)
+
+Inferred memory devices in process
+	in routine ControlUnit line 45 in file
+		'/users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/control.vhd'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|  JAL_data_ctrl_reg  | Latch |   2   |  Y  | N  | N  | N  | -  | -  | -  |
+===========================================================================
+
+Inferred memory devices in process
+	in routine ControlUnit line 78 in file
+		'/users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/control.vhd'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|      SRL_c_reg      | Latch |   1   |  N  | N  | N  | N  | -  | -  | -  |
+|      ALUOp_reg      | Latch |   6   |  Y  | N  | N  | N  | -  | -  | -  |
+|      SRA_c_reg      | Latch |   1   |  N  | N  | N  | N  | -  | -  | -  |
+|      SLL_c_reg      | Latch |   1   |  N  | N  | N  | N  | -  | -  | -  |
+===========================================================================
+Presto compilation completed successfully.
+Information: Building the design 'program_counter'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/program_counter.vhd:16: The initial value for signal 'temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+
+Inferred memory devices in process
+	in routine program_counter_o31_0 line 19 in file
+		'/users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/program_counter.vhd'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      temp_reg       | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+|        o_reg        | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'rom'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'regfile' instantiated from design 'processor' with
+	the parameters "NBIT=32,NSEL=5". (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/regfile.vhd:24: Initial values for signals/variables are not supported for synthesis by default. They are ignored. (VHD-7)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/regfile.vhd:35: Processes containing more than one 'if' statement that tests an event expression are not supported. (ELAB-413)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'alu'. (HDL-193)
+
+Statistics for case statements in always block at line 21 in file
+	'/users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/alu.vhd'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            23            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Information: Building the design 'ram'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/ram.vhd:18: The initial value for signal 'MATRIX1' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/ram.vhd:28: Processes containing more than one 'if' statement that tests an event expression are not supported. (ELAB-413)
+*** Presto compilation terminated with 1 errors. ***
+Information: Building the design 'multiplexer_32'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'multiplexer_5'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'pipeFD'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:15: The initial value for signal 'dataIO_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:22: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:22: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeFD.vhd:22: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+*** Presto compilation terminated with 3 errors. ***
+Information: Building the design 'sign_extender'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'pipeDE'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:44: The initial value for signal 'rdata_1_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:45: The initial value for signal 'rdata_2_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:46: The initial value for signal 'Rs_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:47: The initial value for signal 'Rt_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:48: The initial value for signal 'Rd_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:49: The initial value for signal 'SignImm_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:50: The initial value for signal 'RegWrite_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:51: The initial value for signal 'MemtoReg_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:52: The initial value for signal 'MemWrite_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:53: The initial value for signal 'ALUControl_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:54: The initial value for signal 'ALUSrc_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:55: The initial value for signal 'RegDst_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+Error:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeDE.vhd:74: An if statement containing a clock event has an illegal else branch and is not supported for synthesis. (ELAB-928)
+*** Presto compilation terminated with 3 errors. ***
+Information: Building the design 'mux_3to1'. (HDL-193)
+
+Inferred memory devices in process
+	in routine mux_3to1 line 16 in file
+		'/users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/3to1_mux.vhd'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|     Output_reg      | Latch |  32   |  Y  | N  | N  | N  | -  | -  | -  |
+===========================================================================
+Presto compilation completed successfully.
+Information: Building the design 'pipeEM'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeEM.vhd:27: The initial value for signal 'WriteData_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeEM.vhd:28: The initial value for signal 'ALU_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeEM.vhd:29: The initial value for signal 'RegWrite_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeEM.vhd:30: The initial value for signal 'MemtoReg_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeEM.vhd:31: The initial value for signal 'WriteReg_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeEM.vhd:32: The initial value for signal 'MemWrite_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+
+Inferred memory devices in process
+	in routine pipeEM line 34 in file
+		'/users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeEM.vhd'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| WriteData_temp_reg  | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+|    ALU_temp_reg     | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+|  RegWrite_temp_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  MemtoReg_temp_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  WriteReg_temp_reg  | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+|  MemWrite_temp_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'pipeMW'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeMW.vhd:25: The initial value for signal 'ReadData_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeMW.vhd:26: The initial value for signal 'ALU_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeMW.vhd:27: The initial value for signal 'RegWrite_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeMW.vhd:28: The initial value for signal 'MemtoReg_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeMW.vhd:29: The initial value for signal 'WriteReg_temp' is not supported for synthesis. Presto ignores it.  (ELAB-130)
+
+Inferred memory devices in process
+	in routine pipeMW line 31 in file
+		'/users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/pipeMW.vhd'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  ReadData_temp_reg  | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+|    ALU_temp_reg     | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+|  RegWrite_temp_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  MemtoReg_temp_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  WriteReg_temp_reg  | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'hazard_unit'. (HDL-193)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/hazard_unit.vhd:29: The port default value in entity declaration for port 'forwardAE' is not supported. Presto ignores it. (ELAB-802)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/hazard_unit.vhd:30: The port default value in entity declaration for port 'forwardBE' is not supported. Presto ignores it. (ELAB-802)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/hazard_unit.vhd:31: The port default value in entity declaration for port 'stallIF' is not supported. Presto ignores it. (ELAB-802)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/hazard_unit.vhd:32: The port default value in entity declaration for port 'stallID' is not supported. Presto ignores it. (ELAB-802)
+Warning:  /users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/hazard_unit.vhd:33: The port default value in entity declaration for port 'flushE' is not supported. Presto ignores it. (ELAB-802)
+
+Inferred memory devices in process
+	in routine hazard_unit line 39 in file
+		'/users/ugrad2/2014/fall/fhool/eecs112l/test/regfile_syn/design/hazard_unit.vhd'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|     flushE_reg      | Latch |   1   |  N  | N  | N  | N  | -  | -  | -  |
+|    forwardAE_reg    | Latch |   2   |  Y  | N  | N  | N  | -  | -  | -  |
+|     stallIF_reg     | Latch |   1   |  N  | N  | N  | N  | -  | -  | -  |
+|    forwardBE_reg    | Latch |   2   |  Y  | N  | N  | N  | -  | -  | -  |
+|     stallID_reg     | Latch |   1   |  N  | N  | N  | N  | -  | -  | -  |
+===========================================================================
+Presto compilation completed successfully.
+Information: Building the design 'and_gate'. (HDL-193)
+Presto compilation completed successfully.
+Warning: Design 'processor' has '4' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1

@@ -1,0 +1,75 @@
+Information: Propagating switching activity (medium effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+Warning: Design has unannotated black box outputs. (PWR-428)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort medium
+        -verbose
+Design : processor
+Version: J-2014.09-SP4
+Date   : Sun Mar 13 14:22:05 2016
+****************************************
+
+
+Library(s) Used:
+
+    saed32lvt_tt1p05vn40c (File: /users/ugrad2/2012/spring/pooriam/libraries/saed32lvt_tt1p05vn40c.db)
+
+
+Operating Conditions: tt1p05vn40c   Library: saed32lvt_tt1p05vn40c
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+processor              8000              saed32lvt_tt1p05vn40c
+ControlUnit            ForQA             saed32lvt_tt1p05vn40c
+program_counter_o31_0  ForQA             saed32lvt_tt1p05vn40c
+rom                    ForQA             saed32lvt_tt1p05vn40c
+alu_0                  8000              saed32lvt_tt1p05vn40c
+multiplexer_5_0        ForQA             saed32lvt_tt1p05vn40c
+sign_extender          ForQA             saed32lvt_tt1p05vn40c
+mux_3to1_0             8000              saed32lvt_tt1p05vn40c
+pipeEM                 8000              saed32lvt_tt1p05vn40c
+pipeMW                 8000              saed32lvt_tt1p05vn40c
+hazard_unit            ForQA             saed32lvt_tt1p05vn40c
+mux_3to1_1             8000              saed32lvt_tt1p05vn40c
+multiplexer_32_3       ForQA             saed32lvt_tt1p05vn40c
+multiplexer_32_4       ForQA             saed32lvt_tt1p05vn40c
+multiplexer_5_1        ForQA             saed32lvt_tt1p05vn40c
+
+
+Global Operating Voltage = 1.05 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+processor                                44.678  374.191 2.53e+09 2.95e+03 100.0
+  HazardUnit (hazard_unit)                1.901    3.360 1.02e+08  107.269   3.6
+  PIPE_MW_MULT (multiplexer_32_3)         3.672    5.265 4.79e+07   56.853   1.9
+  MW (pipeMW)                             1.590  174.293 5.77e+08  752.969  25.6
+  EM (pipeEM)                             3.217  105.375 3.41e+08  449.945  15.3
+  Mult_5 (multiplexer_5_1)                0.442    0.609 8.27e+06    9.316   0.3
+  BOT_MUX (multiplexer_32_4)              5.328    3.865 5.29e+07   62.080   2.1
+  BOT_3_MUX (mux_3to1_1)                  1.261      N/A 2.85e+08  276.766   9.4
+  TOP_3_MUX (mux_3to1_0)                  4.402      N/A 2.85e+08  288.142   9.8
+  DE (pipeDE)                             2.677    0.000    0.000    2.677   0.1
+  SE (sign_extender)                      0.000    0.000    0.000    0.000   0.0
+  Mult3 (multiplexer_5_0)              2.05e-03    0.198 3.72e+06    3.922   0.1
+  RAM_1 (ram)                             0.501    0.000    0.000    0.501   0.0
+  ALU_1 (alu_0)                          14.236   33.914 4.94e+08  542.314  18.4
+  REG (regfile)                        1.26e-02    0.000    0.000 1.26e-02   0.0
+  ROM_1 (rom)                             1.763    1.880 5.20e+07   55.680   1.9
+  PC (program_counter_o31_0)              3.430   55.488 1.77e+08  236.085   8.0
+  Control (ControlUnit)                   0.246      N/A 1.01e+08  100.870   3.4
+1

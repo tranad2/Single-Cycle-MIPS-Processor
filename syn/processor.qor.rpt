@@ -1,0 +1,85 @@
+Warning: Design 'processor' has '3' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : qor
+Design : processor
+Version: J-2014.09-SP4
+Date   : Sun Mar 13 14:22:04 2016
+****************************************
+
+
+  Timing Path Group 'ref_clk'
+  -----------------------------------
+  Levels of Logic:               6.00
+  Critical Path Length:          0.36
+  Critical Path Slack:           1.62
+  Critical Path Clk Period:      2.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:         14
+  Hierarchical Port Count:       1103
+  Leaf Cell Count:                921
+  Buf/Inv Cell Count:             143
+  Buf Cell Count:                  14
+  Inv Cell Count:                 129
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:       720
+  Sequential Cell Count:          201
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:     1811.538434
+  Noncombinational Area:  1213.791771
+  Buf/Inv Area:            201.790337
+  Total Buffer Area:            35.07
+  Total Inverter Area:         166.72
+  Macro/Black Box Area:      0.000000
+  Net Area:                724.809754
+  -----------------------------------
+  Cell Area:              3025.330205
+  Design Area:            3750.139959
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:          1165
+  Nets With Violations:             2
+  Max Trans Violations:             0
+  Max Cap Violations:               2
+  -----------------------------------
+
+
+  Hostname: zuma.eecs.uci.edu
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    0.64
+  Logic Optimization:                  0.39
+  Mapping Optimization:                1.48
+  -----------------------------------------
+  Overall Compile Time:               12.17
+  Overall Compile Wall Clock Time:    15.01
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+
+  Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+  --------------------------------------------------------------------
+
+
+1
