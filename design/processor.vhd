@@ -316,7 +316,7 @@ begin
 		(
 		clk=>ref_clk, 
 		we=>MemRead_1, 
-		addr=>O_out_1,
+		addr=>ALUOutM_O,
 		dataI=>rdata_2_1, 
 		dataO=>dataO_1
 		);  
