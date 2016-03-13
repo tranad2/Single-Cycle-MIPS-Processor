@@ -1,0 +1,179 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{tikz-timing}
+
+\lstdefinelanguage{VHDL}{
+  morekeywords={
+    library,use,all,ENTITY,IS,PORT,IN,OUT,end,architecture,of,
+    begin,and, ARCHITECTURE, IF, THEN, SIGNAL,END, PROCESS
+  },
+  morecomment=[l]--
+}
+
+\usepackage{xcolor}
+\colorlet{keyword}{blue!100!black!80}
+\colorlet{comment}{green!90!black!90}
+\lstdefinestyle{vhdl}{
+  language     = VHDL,
+  basicstyle   = \ttfamily\scriptsize,
+  keywordstyle = \color{keyword}\bfseries\ttfamily,
+  commentstyle = \color{comment}\ttfamily,	
+  tabsize=1
+}
+
+\renewcommand{\lstlistingname}{Code}
+
+% Default margins are too wide all the way around. I reset them here
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+\setlength{\oddsidemargin}{.125in}
+\setlength{\textwidth}{6.25in}
+
+
+%\let\oldenumerate\enumerate
+%\renewcommand{\enumerate}{
+  %\oldenumerate
+  %\setlength{\itemsep}{1pt}
+  %\setlength{\parskip}{0pt}
+  %\setlength{\parsep}{0pt}
+%}
+
+
+\begin{document}
+\title{Organization of Digital Computer Lab \\ EECS112L/CSE 132L}
+\author{\textbf{Assignment 3 }\\ \textbf{Single-cycle MIPS - Complete} \\ \\
+Prepared by: Team Big Test Icicles \\ \\ Student name: \\ Michael Herrera \\ Kevin Ngo \\ Alexander Tran \\ Franklin Hool \\ \\ Student ID: \\ 47378920 \\ 25092065 \\ 64197583 \\ 71351119 \\ \\ 
+EECS Department\\ Henry Samueli School of Engineering \\ University of California, Irvine \\ \\
+{February 14, 2016}} 
+
+
+\date{}
+\maketitle
+
+
+\section{Design}
+ This lab continues off of the previous assignment's single-cycle MIPS processor. In addition to the instructions from the last assignment, the datapath now supports unconditional jumps, conditional branches and I-Type instructions.  
+\\
+
+\textbf{Supported Instructions:}
+
+\textbf{Branches - }\texttt{BEQ, BNE, BLTZ, BGEZ, BLEZ, BGTZ, J, JR, JAL, JALR}
+
+\textbf{Memory operation - }\texttt{LB, LBU, LH, LHU, LW, SB, SH, SW, }
+
+\textbf{Arithmetic - }\texttt{ADD, ADDU, ADDIU, SUB, SUBU, AND, ANDI, OR, ORI, XOR, XORI, NOR , LUI, SLT, SLTU, SLTIU}
+
+\textbf{Shift - }\texttt{SLL, SRL, SRA, SLLV, SRLV, SRAV}
+
+	\subsection{Processor}
+	The processor is the top-level block of the design. It is responsible for connecting the program counter, instruction memory, controller, register file, ALU, data memory, and all other supplementary components together in order to create the MIPS processor.  
+	
+	\subsection{Program Counter}
+	The PC is used to tell the processor what instruction to read inside of the instruction memory. After each clock cycle, it is incremented by 1 in order for the next instruction to be read. With the addition of branching and jumping instructions, the PC's value can now be changed in order to access specific instructions in the instruction memory.
+	
+	\subsection{Instruction Memory}
+	The instruction memory (ROM) is the block that contains the instructions that will be performed by the processor. 
+	
+  \subsection{Controller}
+	The controller is needed to determine which blocks are enabled for a given instruction since different instructions may have datapaths. It sends signals for multiplexer operations, regwrite, and memwrite. With the addition of I-Type instructions, it also decodes opcodes and translates them into functions for the ALU. 
+	
+	\subsection{Register File}
+	The register file holds an array of registers used for reading and writing data.
+	
+	\subsection{ALU}
+	The ALU performs various arithmetic and logic functions with its "A" and "B" inputs and sends the result to the output. To support the new I-Type instructions, a 2-to-1 multiplexer is added to the "B" input of the ALU. It is controlled by the controller, which decides whether to use the value from the register file or an immediate value in the instruction.
+	
+	\subsection{Data Memory}
+The data memory (RAM) is where data is written to and stored. It is a 512-word x 32-bit array whose size can be reconfigured at instantiation time using \texttt{dsize}.
+		
+\section{Testing}
+To test the MIPS processor, we first tested the individual components if possible. We tested the ALU with a testbench that had static inputs \textbf{A\_in} and \textbf{B\_in} that produced values for outputs \textbf{O\_out} and \textbf{Branch\_out}. The operations tested were \textbf{sll, srl, sra, sllv, srav, add, addu, sub, subu, and, or,  xor, nor, slt, sltu, lui, bltz, bgez, beq, bne, blez, bgtz}. 
+
+\\ \\
+\begin{figure}[!ht]
+	\centering
+		\includegraphics[width=1\textwidth]{ALU_waveform.png}
+		\caption{ALU waveform}
+\end{figure}
+\\ \\
+
+To test the controller, we gave it opcodes for each case and looked at the resulting enable bit outputs. We tested opcodes for \textbf{R-Type, lw, sw, beq, bne, j, addi, jal, jr, sb, sh, sw, lbu, lh, lhu, lw, lb, addiu, andi, ori, xori, slti, sltiu, lui, bltz, bgez, beq, bne, blez, bgtz, lw, sw}.
+
+\\ \\
+\begin{figure}[!ht]
+	\centering
+		\includegraphics[width=1\textwidth]{control_waveform.png}
+		\caption{Control waveform}
+\end{figure}
+\\ \\
+
+To test the processor, we preloaded the ROM with the instructions given in the assignment specificiations. Those instructions are listed below: 
+\begin{enumerate}
+	\item \texttt{20020005 - 001000 00000 00010 0000000000000101 - addi} 
+	\item \texttt{2003000c - 001000 00000 00011 0000000000001100 - addi} 
+	\item \texttt{2067fff7 - 001000 00011 00111 1111111111110111 - addi} 
+	\item \texttt{00e22025 - 000000 00111 00010 00100 00000 100101 - or}
+	\item \texttt{00642824 - 000000 00011 00100 00101 00000 100100 - and}
+	\item \texttt{00a42820 - 000000 00101 00100 00101 00000 100000 - add}
+	\item \texttt{10a7000a - 000100 00101 00111 0000000000001010 - beq}
+	\item \texttt{0064202a - 000000 00011 00100 00100 00000 101010 - slt}
+	\item \texttt{10800001 - 000100 00100 00000 0000000000000001 - beq}
+	\item \texttt{20050000 - 001000 00000 00101 0000000000000000 - addi}
+	\item \texttt{00e2202a - 000000 00111 00010 00100 00000 101010 - slt}
+	\item \texttt{00853820 - 000000 00100 00101 00111 00000 100000 - add}
+	\item \texttt{00e23822 - 000000 00111 00010 00111 00000 100010 - sub}
+	\item \texttt{ac670044 - 101011 00011 00111 0000000001000100 - sw}
+	\item \texttt{8c020050 - 100011 00000 00010 0000000001010000 - lw}
+	\item \texttt{08000011 - 000010 00000 00000 0000000000010001 - j}
+	\item \texttt{20020001 - 001000 00000 00010 0000000000000001 - addi}
+	\item \texttt{ac020054 - 101011 00000 00010 0000000001010100 - sw}
+\end{enumerate}
+
+\\ \\
+\begin{figure}[!ht]
+	\centering
+		\includegraphics[width=1\textwidth]{processor_waveform_1.png}
+		\caption{Processor waveform 1}
+\end{figure}
+\\ \\
+
+\\ \\
+\begin{figure}[!ht]
+	\centering
+		\includegraphics[width=1\textwidth]{processor_waveform_2.png}
+		\caption{Processor waveform 2}
+\end{figure}
+\\ \\
+
+\\ \\
+\begin{figure}[!ht]
+	\centering
+		\includegraphics[width=1\textwidth]{processor_waveform_3.png}
+		\caption{Processor waveform 3}
+\end{figure}
+\\ \\
+ 
+\section{Bugs}
+Our testing for the processor is not extensive due to time constraints. Therefore, we are not able to discern any bugs at its current state. If more time was available, the processor could be further tested by comparing every resulting bit to its expected bit at every output to verify that they match up completely to the MIPS architecture's logic.
+
+\section{Synthesis}
+Area = 378.425083\\
+Power = 307.381\\
+Maximum Frequency = 2.778\\
+
+Due to unknown circumstances, we were unable to obtain the critical path length needed in order to calculate the maximum frequency.
+
+\begin{figure}[!ht]
+	\centering
+		\includegraphics[width=1\textwidth]{processor_synthesis.png}
+		\caption{Processor synthesis}
+\end{figure}
+\\ \\
+\end{document}
+
