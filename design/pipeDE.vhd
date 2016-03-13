@@ -36,20 +36,66 @@ ENTITY pipeDE IS
 		MemWriteE: OUT STD_LOGIC;
 		ALUControlE: OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
 		ALUSrcE: OUT STD_LOGIC;
-		RegDstE: OUT STD_LOGIC;
+		RegDstE: OUT STD_LOGIC
 	);
 END pipeDE;
 
 ARCHITECTURE arch_pipe of pipeDE IS
+	SIGNAL rdata_1_temp: STD_LOGIC_VECTOR(31 DOWNTO 0) := (others=>'0');
+	SIGNAL rdata_2_temp: STD_LOGIC_VECTOR(31 DOWNTO 0) := (others=>'0');
+	SIGNAL Rs_temp: STD_LOGIC_VECTOR(4 DOWNTO 0) := (others=>'0');
+	SIGNAL Rt_temp: STD_LOGIC_VECTOR(4 DOWNTO 0) := (others=>'0');
+	SIGNAL Rd_temp: STD_LOGIC_VECTOR(4 DOWNTO 0) := (others=>'0');
+	SIGNAL SignImm_temp: STD_LOGIC_VECTOR(31 DOWNTO 0) := (others=>'0');
+	SIGNAL RegWrite_temp: STD_LOGIC := '0';
+	SIGNAL MemtoReg_temp: STD_LOGIC := '0';
+	SIGNAL MemWrite_temp: STD_LOGIC := '0';
+	SIGNAL ALUControl_temp: STD_LOGIC_VECTOR(5 DOWNTO 0) := (others=>'0');
+	SIGNAL ALUSrc_temp: STD_LOGIC := '0';
+	SIGNAL RegDst_temp: STD_LOGIC := '0';
+
 BEGIN
-	PROCESS(clk, stallD)
+	PROCESS(clk, FlushE)
 	BEGIN
-		IF stallD = '0' THEN
-			dataIO_out <= dataIO_temp;
-		ELSE IF clk'EVENT AND clk = '1' AND stallD = '0' THEN
-			dataIO_temp <= dataIO_in;
-		ELSE IF stallD = '1' THEN
-			dataIO_out <= (others=>'0');
+		IF FlushE = '0' THEN
+			rdata_1_out <= rdata_1_temp;
+			rdata_2_out <= rdata_2_temp;
+			RsE <= Rs_temp;
+			RtE <= Rt_temp;
+			RdE <= Rd_temp;
+			SignImmE <= SignImm_temp;
+			RegWriteE <= RegWrite_temp;
+			MemtoRegE <= MemtoReg_temp;
+			MemWriteE <= MemWrite_temp;
+			ALUControlE <= ALUControl_temp;
+			ALUSrcE <= ALUSrc_temp;
+			RegDstE <= RegDst_temp;
+		ELSIF clk'EVENT AND clk = '1' AND FlushE = '0' THEN
+			rdata_1_temp <= rdata_1_in;
+			rdata_2_temp <= rdata_2_in;
+			Rs_temp <= RsD;
+			Rt_temp <= RtD;
+			Rd_temp <= RdD;
+			SignImm_temp <= SignImmD;
+			RegWrite_temp <= RegWriteD;
+			MemtoReg_temp <= MemtoRegD;
+			MemWrite_temp <= MemWriteD;
+			ALUControl_temp <= ALUControlD;
+			ALUSrc_temp <= ALUSrcD;
+			RegDst_temp <= RegDstD;
+		ELSIF FlushE = '1' THEN
+			rdata_1_out <= (others=>'0');
+			rdata_2_out <= (others=>'0');
+			RsE <= (others=>'0');
+			RtE <= (others=>'0');
+			RdE <= (others=>'0');
+			SignImmE <= (others=>'0');
+			RegWriteE <= '0';
+			MemtoRegE <= '0';
+			MemWriteE <= '0';
+			ALUControlE <= (others=>'0');
+			ALUSrcE <= '0';
+			RegDstE <= '0';
 		END IF;
 	END PROCESS;
 END arch_pipe;
