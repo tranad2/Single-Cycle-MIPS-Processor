@@ -295,8 +295,8 @@ begin
 		clk=>ref_clk, 
 		rst_s=>reset, 
 		we=>RegWrite_1,
-		raddr_1=>dataIO_1(25 DOWNTO 21), 
-		raddr_2=>dataIO_1(20 DOWNTO 16), 
+		raddr_1=>dataIO_Out(25 DOWNTO 21), 
+		raddr_2=>dataIO_Out(20 DOWNTO 16), 
 		waddr=>Mult3_Output, 
 		rdata_1=>rdata_1_1, 
 		rdata_2=>rdata_2_1, 
@@ -324,14 +324,14 @@ begin
 	MULT: multiplexer_32 port map
 		(
 		in0=>rdata_2_1, 
-		in1=> dataIO_1, 
+		in1=> dataIO_Out, 
 		Output=>Mult1_Output, 
 		sel=>ALUSrc_1
 		);
 	--MULTIPLEXER 2 for RAM->RegFile
 	MULT2: multiplexer_32 port map
 		(
-		in0=>dataO_1, 
+		in0=>dataO_Out, 
 		in1=>O_out_1, 
 		Output=>Mult2_Output, 
 		sel=>MTM_1
@@ -339,8 +339,8 @@ begin
 		--Multiplexer 3 for ALU->ROM
 	Mult3: multiplexer_5 port map
 		(
-		in0=>dataIO_1(20 DOWNTO 16),
-		in1=> dataIO_1(15 DOWNTO 11),
+		in0=>dataIO_Out(20 DOWNTO 16),
+		in1=> dataIO_Out(15 DOWNTO 11),
 		Output=>Mult3_Output,
 		sel=>RegDst_1
 		);
@@ -355,7 +355,7 @@ begin
 
 	SE: sign_extender port map
 	(
-		input=> DataIO_1(15 DOWNTO 0), 
+		input=> DataIO_Out(15 DOWNTO 0), 
 		output=> SignImmD_O 
 	);
 
@@ -370,9 +370,9 @@ begin
 		rdata_1_in=>rdata_1_1,
 		rdata_2_in=>rdata_2_1,
 		--pipeFD
-		RsD=>DataIO_1(25 DOWNTO 21),
-		RtD=>DataIO_1(20 DOWNTO 16),
-		RdD=>DataIO_1(15 DOWNTO 11),
+		RsD=>DataIO_Out(25 DOWNTO 21),
+		RtD=>DataIO_Out(20 DOWNTO 16),
+		RdD=>DataIO_Out(15 DOWNTO 11),
 		SignImmD=>SignImmD_O ,
 		--control
 		RegWriteD=>RegWrite_1,
