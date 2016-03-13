@@ -1,0 +1,73 @@
+# vsim -l processor_simulation.log -do "sim.do" -c processor_tb_opt 
+# Start time: 15:05:39 on Mar 13,2016
+# //  Questa Sim-64
+# //  Version 10.4c linux_x86_64 Jul 19 2015
+# //
+# //  Copyright 1991-2015 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# Loading sv_std.std
+# Loading work.processor_tb(fast)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(pcarch)#1
+# Loading work.controlunit(arch_controlunit)#1
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.program_counter(behaviorial)#1
+# Loading work.rom(arch_rom)#1
+# Loading work.regfile(sequential)#1
+# Loading work.alu(arch_alu)#1
+# Loading work.ram(arch_ram)#1
+# Loading work.multiplexer_32(arch_multiplexer)#1
+# Loading work.multiplexer_5(arch_multiplexer)#1
+# Loading work.pipefd(arch_pipe)#1
+# Loading work.sign_extender(arch_extender)#1
+# Loading work.pipede(arch_pipe)#1
+# Loading work.mux_3to1(arch_multiplexer)#1
+# Loading work.pipeem(arch_pipe)#1
+# Loading work.pipemw(arch_pipe)#1
+# Loading work.hazard_unit(behavior)#1
+# Loading work.and_gate(behavioral)#1
+# do sim.do
+# .
+# waveform.wlf
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ns  Iteration: 0  Instance: .processor_tb.L1.ROM_1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 50 ns  Iteration: 1  Instance: .processor_tb.L1.RAM_1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 150 ns  Iteration: 1  Instance: .processor_tb.L1.RAM_1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 250 ns  Iteration: 1  Instance: .processor_tb.L1.RAM_1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 350 ns  Iteration: 1  Instance: .processor_tb.L1.RAM_1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 450 ns  Iteration: 1  Instance: .processor_tb.L1.RAM_1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 550 ns  Iteration: 1  Instance: .processor_tb.L1.RAM_1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 650 ns  Iteration: 1  Instance: .processor_tb.L1.RAM_1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 750 ns  Iteration: 1  Instance: .processor_tb.L1.RAM_1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 850 ns  Iteration: 1  Instance: .processor_tb.L1.RAM_1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 950 ns  Iteration: 1  Instance: .processor_tb.L1.RAM_1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1050 ns  Iteration: 1  Instance: .processor_tb.L1.RAM_1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1150 ns  Iteration: 1  Instance: .processor_tb.L1.RAM_1
+# End time: 15:05:41 on Mar 13,2016, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 13

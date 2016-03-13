@@ -39,5 +39,22 @@ initial begin
 		#50;
 	ref_clk = 1'b1;
 		#50;
+	ref_clk = 1'b0;
+		#50;
+	ref_clk = 1'b1;
+		#50;
+	ref_clk = 1'b0;
+		#50;
+	ref_clk = 1'b1;
+		#50;
+	ref_clk = 1'b0;
+		#50;
+	ref_clk = 1'b1;
+		#50;
+	ref_clk = 1'b0;
+		#50;
+	ref_clk = 1'b1;
+		#50;
+	
 end
 endmodule

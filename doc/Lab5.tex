@@ -70,10 +70,10 @@ EECS Department\\ Henry Samueli School of Engineering \\ University of Californi
 \textbf{Arithmetic - }\texttt{ADD, SUB, AND, OR, XOR, NOR, SLT}
 
 	\subsection{Processor}
-	The processor is the top-level block of the design. It is responsible for connecting the program counter, instruction memory, controller, register file, ALU, data memory, and all other supplementary components together in order to create the MIPS processor.  
+	The processor is the top-level block of the design. It is responsible for connecting the program counter, instruction memory, controller, register file, ALU, data memory, hazard unit, pipeline registers, and all other supplementary components together in order to create the MIPS processor.  
 	
 	\subsection{Program Counter}
-	The PC is used to tell the processor what instruction to read inside of the instruction memory. After each clock cycle, it is incremented by 1 in order for the next instruction to be read. With the addition of branching and jumping instructions, the PC's value can now be changed in order to access specific instructions in the instruction memory.
+	The PC is used to tell the processor what instruction to read inside of the instruction memory. After each clock cycle, it is incremented by 1 in order for the next instruction to be read. With the addition of branching and jumping instructions, the PC's value can now be changed in order to access specific instructions in the instruction memory. For the pipeline implementation, the PC can be stalled when needed and is controlled by the hazard unit.
 	
 	\subsection{Instruction Memory}
 	The instruction memory (ROM) is the block that contains the instructions that will be performed by the processor. 
@@ -82,7 +82,7 @@ EECS Department\\ Henry Samueli School of Engineering \\ University of Californi
 	The controller is needed to determine which blocks are enabled for a given instruction since different instructions may have datapaths. It sends signals for multiplexer operations, regwrite, and memwrite. With the addition of I-Type instructions, it also decodes opcodes and translates them into functions for the ALU. 
 	
 	\subsection{Register File}
-	The register file holds an array of registers used for reading and writing data.
+	The register file holds an array of registers that are used for reading and writing data.
 	
 	\subsection{ALU}
 	The ALU performs various arithmetic and logic functions with its "A" and "B" inputs and sends the result to the output. To support the new I-Type instructions, a 2-to-1 multiplexer is added to the "B" input of the ALU. It is controlled by the controller, which decides whether to use the value from the register file or an immediate value in the instruction.
@@ -94,55 +94,38 @@ EECS Department\\ Henry Samueli School of Engineering \\ University of Californi
 	The hazard unit controls whether to use the real control values from the controller or '0' when hazards are detected, such as data hazards, load-use hazard, and branch hazards. In the event of a hazard, depending on the type of hazard, the hazard unit will either stall the process or forward data. Data hazards, such as Read-After-Write or Write-After-Read, will cause forwarding in the pipeline implementation and stalling will occur in load-use hazard and branch hazards.
 		
 	\subsection{Pipeline Registers}
-	With each clock cycle, data from the pipeline register is read first and then data coming into the register is stored so that it is read in the next cycle, imitating a pipeline implementation. When stall occurs in the fetch stage or decode stage, the value in the pipeline register is preserved when a nop instruction is executed. 
+	With each clock cycle, data from the pipeline register is read first and then data coming into the register is stored so that it is read in the next cycle, imitating a pipeline implementation. When stall occurs in the fetch stage or decode stage, the value in the pipeline register is preserved when a \texttt{NOP|} instruction is executed. 
 		
 \section{Testing}
-	To test the MIPS processor, we first tested the individual components if possible. We tested the ALU with a testbench that had static inputs \textbf{A\_in} and \textbf{B\_in} that produced values for outputs \textbf{O\_out} and \textbf{Branch\_out}. The operations tested were \textbf{sll, srl, sra, sllv, srav, add, addu, sub, subu, and, or,  xor, nor, slt, sltu, lui, bltz, bgez, beq, bne, blez, bgtz}. 
+	To test the MIPS processor, we first tested the individual components if possible. The new pipeline registers were simulated individually to demonstrate the logic. When stall is off, the register will hold the input value present at the rising edge of the clock. Alternatively, it will read out the data stored in the register at any given time. The pipeline register for the fetch/decode was used for testing since it was the simplest one of the four.
 
 \\ \\
 \begin{figure}[!ht]
 	\centering
-		\includegraphics[width=1\textwidth]{ALU_waveform.png}
-		\caption{ALU waveform}
-\end{figure}
-\\ \\
-
-To test the controller, we gave it opcodes for each case and looked at the resulting enable bit outputs. We tested opcodes for \textbf{R-Type, lw, sw, beq, bne, j, addi, jal, jr, sb, sh, sw, lbu, lh, lhu, lw, lb, addiu, andi, ori, xori, slti, sltiu, lui, bltz, bgez, beq, bne, blez, bgtz, lw, sw}.
-
-\\ \\
-\begin{figure}[!ht]
-	\centering
-		\includegraphics[width=1\textwidth]{control_waveform.png}
-		\caption{Control waveform}
+		\includegraphics[width=1\textwidth]{pipeFD_waveform.png}
+		\caption{pipeFD waveform}
 \end{figure}
 \\ \\
 
 To test the processor, we preloaded the ROM with the instructions given in the assignment specificiations. Those instructions are listed below: 
 \begin{enumerate}
-	\item \texttt{20020005 - 001000 00000 00010 0000000000000101 - addi} 
-	\item \texttt{2003000c - 001000 00000 00011 0000000000001100 - addi} 
-	\item \texttt{2067fff7 - 001000 00011 00111 1111111111110111 - addi} 
-	\item \texttt{00e22025 - 000000 00111 00010 00100 00000 100101 - or}
-	\item \texttt{00642824 - 000000 00011 00100 00101 00000 100100 - and}
-	\item \texttt{00a42820 - 000000 00101 00100 00101 00000 100000 - add}
-	\item \texttt{10a7000a - 000100 00101 00111 0000000000001010 - beq}
-	\item \texttt{0064202a - 000000 00011 00100 00100 00000 101010 - slt}
-	\item \texttt{10800001 - 000100 00100 00000 0000000000000001 - beq}
-	\item \texttt{20050000 - 001000 00000 00101 0000000000000000 - addi}
-	\item \texttt{00e2202a - 000000 00111 00010 00100 00000 101010 - slt}
-	\item \texttt{00853820 - 000000 00100 00101 00111 00000 100000 - add}
-	\item \texttt{00e23822 - 000000 00111 00010 00111 00000 100010 - sub}
-	\item \texttt{ac670044 - 101011 00011 00111 0000000001000100 - sw}
-	\item \texttt{8c020050 - 100011 00000 00010 0000000001010000 - lw}
-	\item \texttt{08000011 - 000010 00000 00000 0000000000010001 - j}
-	\item \texttt{20020001 - 001000 00000 00010 0000000000000001 - addi}
-	\item \texttt{ac020054 - 101011 00000 00010 0000000001010100 - sw}
+	\item \texttt{00000000001000100001100000100000 - add R3 R1 R2} 
+	\item \texttt{00000000001000100001100000100001 - sub R3 R1 R2} 
+	\item \texttt{00000000001000100001100000100100 - and R3 R1 R2} 
+	\item \texttt{00000000001000100001100000100101 - or R3 R1 R2}
+	\item \texttt{00000000001000100001100000100110 - xor R3 R1 R2}
+	\item \texttt{00000000001000100001100000100111 - nor R3 R1 R2}
+	\item \texttt{00000000001000100001100000101001 - slt R1 R2 R3}
+	\item \texttt{10101100001000100000000000010100 - sw R2 20(R1)}
+	\item \texttt{10001100001000100000000000010100 - lw R2 20(R1)}
+	\item \texttt{00010000101001110000000000001010 - beq R5 R7 10}
+	\item \texttt{00001000000000000000000000000000 - j 0}
 \end{enumerate}
 
 \\ \\
 \begin{figure}[!ht]
 	\centering
-		\includegraphics[width=1\textwidth]{processor_waveform_1.png}
+		\includegraphics[width=1\textwidth]{processor_waveform1.png}
 		\caption{Processor waveform 1}
 \end{figure}
 \\ \\
@@ -150,16 +133,8 @@ To test the processor, we preloaded the ROM with the instructions given in the a
 \\ \\
 \begin{figure}[!ht]
 	\centering
-		\includegraphics[width=1\textwidth]{processor_waveform_2.png}
+		\includegraphics[width=1\textwidth]{processor_waveform2.png}
 		\caption{Processor waveform 2}
-\end{figure}
-\\ \\
-
-\\ \\
-\begin{figure}[!ht]
-	\centering
-		\includegraphics[width=1\textwidth]{processor_waveform_3.png}
-		\caption{Processor waveform 3}
 \end{figure}
 \\ \\
  
@@ -167,15 +142,13 @@ To test the processor, we preloaded the ROM with the instructions given in the a
 Our testing for the processor is not extensive due to time constraints. Therefore, we are not able to discern any bugs at its current state. If more time was available, the processor could be further tested by comparing every resulting bit to its expected bit at every output to verify that they match up completely to the MIPS architecture's logic.
 
 \section{Synthesis}
-Area = 378.425083\\
-Power = 307.381\\
+Area = 3750.139959\\
+Power = 2.95e+03\\
 Maximum Frequency = 2.778\\
-
-Due to unknown circumstances, we were unable to obtain the critical path length needed in order to calculate the maximum frequency.
 
 \begin{figure}[!ht]
 	\centering
-		\includegraphics[width=1\textwidth]{processor_synthesis.png}
+		\includegraphics[width=1\textwidth]{processor_schematic.png}
 		\caption{Processor synthesis}
 \end{figure}
 \\ \\
