@@ -1,5 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 ENTITY processor IS
 	PORT (
@@ -26,11 +27,15 @@ component alu
             Branch_out      : OUT std_logic
         );
 end component alu; 
-component and_gate IS 
-	( IN1 : in STD_LOGIC; -- AND gate input 
-	IN2 : in STD_LOGIC; -- AND gate input 
-	OUT1 : out STD_LOGIC); -- AND gate output 
+
+component and_gate
+	PORT( 
+		IN1 : in STD_LOGIC; -- AND gate input 
+		IN2 : in STD_LOGIC; -- AND gate input 
+		OUT1 : out STD_LOGIC
+		); -- AND gate output 
 end component;
+
 component regfile
 	GENERIC (	NBIT : INTEGER := 32;
                 NSEL : INTEGER := 5
@@ -227,8 +232,8 @@ component hazard_unit
 	);
 end component;
 
-signal Branch_out_1, MemRead_1, MemWrite_1, MTM_1, Branch_1, ALUSrc_1, RegDst_1, RegWrite_1:std_LOGIC;
-signal dataIO_1, O_out_1,rdata_1_1, rdata_2_1,  dataO_1, PC_Output,Mult1_Output , Mult2_Output, SignImmD_O:std_logic_vector (31 DOWNTO 0);  
+signal Branch_out_1, MemRead_1, MemWrite_1, MTM_1, Branch_1, ALUSrc_1, RegDst_1, RegWrite_1, FF_2b_o_br, add_out_1, jump_out_1:std_LOGIC;
+signal dataIO_1, O_out_1,rdata_1_1, rdata_2_1,  dataO_1, PC_Output,Mult1_Output , Mult2_Output, SignImmD_O, SE_OUTPUT, O_Out_2:std_logic_vector (31 DOWNTO 0);  
 signal ALUOp_1: std_logic_vector (5 DOWNTO 0);
 signal Mult3_Output, WriteRegE_O: std_logic_vector (4 DOWNTO 0);
 --PIPEFD SIGNAL
