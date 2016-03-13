@@ -8,14 +8,14 @@ ENTITY pipeMW IS
 		--Control--
 		RegWriteM: IN STD_LOGIC;
 		MemtoRegM: IN STD_LOGIC;
-		WriteRegM: IN STD_LOGIC;
+		WriteRegM: IN STD_LOGIC_VECTOR(4 DOWNTO 0);
 		--Data
 		ReadDataM: IN STD_LOGIC_VECTOR(31 DOWNTO 0);
 		ALUInM: IN STD_LOGIC_VECTOR(31 DOWNTO 0);
 		--Outputs--
 		RegWriteW: OUT STD_LOGIC;
 		MemtoRegW: OUT STD_LOGIC;
-		WriteRegW: OUT STD_LOGIC;
+		WriteRegW: OUT STD_LOGIC_VECTOR (4 DOWNTO 0);
 		ReadDataW: OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 		ALUOutW: OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	);
@@ -24,9 +24,9 @@ END pipeMW;
 ARCHITECTURE arch_pipe of pipeMW IS
 SIGNAL ReadData_temp: STD_LOGIC_VECTOR(31 DOWNTO 0) := (others=>'0');
 SIGNAL ALU_temp: STD_LOGIC_VECTOR(31 DOWNTO 0) := (others=>'0');
-SIGNAL RegWrite_temp: STD_LOGIC := 0;
-SIGNAL MemtoReg_temp: STD_LOGIC := 0;
-SIGNAL WriteReg_temp: STD_LOGIC := 0;
+SIGNAL RegWrite_temp: STD_LOGIC := '0';
+SIGNAL MemtoReg_temp: STD_LOGIC := '0';
+SIGNAL WriteReg_temp: STD_LOGIC_VECTOR(4 DOWNTO 0) := (others=>'0');
 BEGIN
 	PROCESS(clk)
 	BEGIN
@@ -39,7 +39,7 @@ BEGIN
 		
 		--Store value--
 		IF clk'EVENT AND clk = '1' THEN
-			ReadData_temp <= WriteDataM;
+			ReadData_temp <= ReadDataM;
 			ALU_temp <= ALUInM;
 			RegWrite_temp <= RegWriteM;
 			MemtoReg_temp <= MemtoRegM;

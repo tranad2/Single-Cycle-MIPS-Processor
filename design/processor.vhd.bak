@@ -459,7 +459,7 @@ MW: pipeMW port map
 		in0=>ReadDataW_O, 
 		in1=>ALUOutW_O, 
 		Output=>ResultW, 
-		sel=>MemtoRegW_O
+		sel=MemtoRegW_O
 		);
 
 	HazardUnit: hazard_unit port map

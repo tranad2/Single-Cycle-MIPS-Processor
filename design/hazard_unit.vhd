@@ -6,22 +6,24 @@ entity hazard_unit is
 
 	port(
 		--Logic Inputs
-		Branch: 		in std_logic;							--Branch control
-		reg_writeM: 	in std_logic;							--EX/MEM.RegWrite
-		reg_writeW: 	in std_logic;							--MEM/WB.RegWrite
-		reg_writeE:		in std_logic;
-		MemToRegE: 		in std_logic;							--Asserted for lw instruction
-		MemToRegM:		in std_logic;							--Asserted for branch instruction
-		
-		RegSourceD:		in std_logic_vector(5 DOWNTO 0);
-		RegTargetD: 	in std_logic_vector(5 DOWNTO 0);
-		RegSourceE: 	in std_logic_vector(5 DOWNTO 0);		--ID/EX.RegisterRs
-		RegTargetE: 	in std_logic_vector(5 DOWNTO 0);		--ID/EX.RegisterRt
 
+		Branch: 		in std_logic;
+		MemToRegE:		in std_logic;
+		MemToRegM:		in std_logic;
 		
-		RegToM: 		in std_logic_vector(5 DOWNTO 0);		--EX/MEM.RegisterRd
-		RegToW: 		in std_logic_vector(5 DOWNTO 0);		--MEM/WB.RegisterRd
-		RegToE:			in std_logic_vector(5 DOWNTO 0);
+		
+		RsD:			in std_logic_vector(4 downto 0);
+		RtD:			in std_logic_vector(4 downto 0);
+		RtE:			in std_logic_vector(4 downto 0);
+		RsE:			in std_logic_vector(4 downto 0);
+		RegWriteW: 		in std_logic_vector(4 downto 0);
+		RegWriteM:		in std_logic_vector(4 downto 0);
+		RegWriteE:		in std_logic_vector(4 downto 0);
+		WriteRegM:		in std_logic_vector(4 downto 0);
+		WriteRegE:		in std_logic_vector(4 downto 0);
+		
+		
+		
 		
 		--Logic Outputs
 		forwardAE: 		out std_logic_vector(1 DOWNTO 0)	:= "00";
@@ -34,32 +36,32 @@ end hazard_unit;
 
 architecture behavior of hazard_unit is
 begin
-	process(branch, reg_writeM, reg_writeW, reg_writeE, MemToRegE, MemToRegM)
+	process(Branch, MemToRegE, MemToRegM, RsD, RtD, RtE, RsE, RegWriteW, RegWriteM, RegWriteE, WriteRegE, WriteRegM)
 	begin
 		--Execution Hazard
-		if((reg_writeM = '1') and (RegToM /= "000000") and (RegToM = RegSourceE)) then
+		if((RsE = "00001") and (RegWriteM /= "00000") and (RsE = WriteRegM)) then
 			forwardAE <= "10";
-		elsif((reg_writeM = '1') and (RegToM /= "000000") and (RegToM = RegSourceE)) then
+		elsif((RtE = "00001") and (RegWriteM /= "00000") and (RtE = WriteRegM)) then
 			forwardBE <= "10";	
 			
 		--Memory Hazard
-		elsif((reg_writeW = '1') and (RegToW /= "000000") and (RegToW = RegSourceE)) then
+		elsif((RsE = "00001") and (RegWriteW /= "00000") and (RsE = RegWriteW)) then
 			forwardAE <= "01";
-		elsif((reg_writeW = '1') and (RegToW /= "000000") and (RegToW = RegTargetE)) then
+		elsif((RtE = "00001") and (RegWriteW /= "00000") and (RtE = RegWriteW)) then
 			forwardBE <= "01";
 		
 		--Stall hazard for LW instruction
-		elsif(MemToRegE = '1') and ((RegSourceD = RegTargetE) or (RegTargetD = RegTargetE)) then
+		elsif(MemToRegE = '1') and ((RsD = RtE) or (RtD = RtE)) then
 			stallIF <= '1';
 			stallID <= '1';
 			flushE 	<= '1';
 		--Stall hazard for branch instruction
 		elsif(Branch = '1') then
-			if((reg_writeE = '1') and ((RegToE = RegSourceD) or (RegToE = RegTargetD))) then
+			if((RegWriteE = "00001") and ((WriteRegE = RsD) or (WriteRegE = RtD))) then
 				stallIF <= '1';
 				stallID <= '1';
 				flushE 	<= '1';
-			elsif((MemToRegM = '1') and ((RegToM = RegSourceD) or (RegToM = RegTargetD)))then
+			elsif((MemToRegM = '1') and ((WriteRegM = RsD) or (WriteRegM = RtD)))then
 				stallIF <= '1';
 				stallID <= '1';
 				flushE 	<= '1';
