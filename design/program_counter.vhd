@@ -23,7 +23,7 @@ BEGIN
 		ELSIF clk'event and clk = '1' THEN 
 			o <= temp;
 		END IF;
-		IF stallF = '0' THEN
+		IF clk'event and clk = '1' and stallF = '0' THEN
 			temp <= temp + "00000000000000000000000000000001";
 		END IF;
 	END PROCESS;
