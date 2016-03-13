@@ -70,7 +70,8 @@ BEGIN
 			ALUControlE <= ALUControl_temp;
 			ALUSrcE <= ALUSrc_temp;
 			RegDstE <= RegDst_temp;
-		ELSIF clk'EVENT AND clk = '1' AND FlushE = '0' THEN
+		END IF;
+		IF clk'EVENT AND clk = '1' AND FlushE = '0' THEN
 			rdata_1_temp <= rdata_1_in;
 			rdata_2_temp <= rdata_2_in;
 			Rs_temp <= RsD;

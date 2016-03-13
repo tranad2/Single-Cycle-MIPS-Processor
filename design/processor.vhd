@@ -96,17 +96,16 @@ end component mux_3to1;
 
 component ControlUnit
 	PORT(
-                Opcode: IN STD_LOGIC_VECTOR (5 DOWNTO 0);
-				Func: IN STD_LOGIC_VECTOR (5 DOWNTO 0);
-                ALUOp: OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
-                MemRead: OUT STD_LOGIC;
-                MemWrite: OUT STD_LOGIC;
-                MUX_MemToReg: OUT STD_LOGIC;
-                Branch: OUT STD_LOGIC;
-                ALUSrc: OUT STD_LOGIC;
-                RegDst: OUT STD_LOGIC;
-                RegWrite: OUT STD_LOGIC
-        
+		Opcode: IN STD_LOGIC_VECTOR (5 DOWNTO 0);
+		Func: IN STD_LOGIC_VECTOR (5 DOWNTO 0);
+		ALUOp: OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
+		MemRead: OUT STD_LOGIC;
+		MemWrite: OUT STD_LOGIC;
+		MUX_MemToReg: OUT STD_LOGIC;
+		Branch: OUT STD_LOGIC;
+		ALUSrc: OUT STD_LOGIC;
+		RegDst: OUT STD_LOGIC;
+		RegWrite: OUT STD_LOGIC
         );
 end component;
 
