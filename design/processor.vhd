@@ -248,6 +248,7 @@ signal ReadDataW_O, ALUOutW_O:std_logic_vector(31 DOWNTO 0);
 signal forwardAE_O, forwardBE_O:std_logic_vector(1 DOWNTO 0);
 signal stallIF_O, stallID_O, flushE_O: std_logic;
 	
+signal temp3, temp6, temp2, mult5_Output, mult4_Output: std_logic_vector(31 DOWNTO 0);
 
 begin
 
@@ -488,4 +489,36 @@ MW: pipeMW port map
 		flushE=>flushE_O
 		);
 		
+
+	--ALU for ADD
+	temp3 <= SE_OUTPUT(29 DOWNTO 0)&"00";
+	ALU_2: alu port map
+		(
+		Func_in=>"100000",
+		A_in=>temp6,
+		B_in=>temp3,
+		O_out=>O_Out_2,
+		Branch_Out=> FF_2b_o_br  
+		);
+	
+	temp6<= std_logic_vector(unsigned(PC_OUTPUT)+1);
+-- Multiplexer 4 for Add and AND gate
+	Mult4: multiplexer_32 port map
+		(
+		in0=>temp6,
+		in1=>O_out_2,
+		Output=>Mult4_Output,
+		sel=> add_out_1
+		);
+	--Multiplexer 5 for Multiplexer and ROM_OUTPUT 
+	temp2<= PC_Output(31 DOWNTO 28)&(DataIO_1(25 DOWNTO 0)&"00");
+	Mult5: multiplexer_32 port map
+		(
+		in0=>temp2,
+		in1=>Mult4_Output,
+		Output=>Mult5_Output,
+		sel=>jump_out_1
+		);
+
+
 end pcArch;
