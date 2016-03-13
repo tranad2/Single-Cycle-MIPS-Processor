@@ -47,10 +47,10 @@
 
 \begin{document}
 \title{Organization of Digital Computer Lab \\ EECS112L/CSE 132L}
-\author{\textbf{Assignment 3 }\\ \textbf{Single-cycle MIPS - Complete} \\ \\
+\author{\textbf{Assignment 5 }\\ \textbf{Single-cycle MIPS - Complete} \\ \\
 Prepared by: Team Big Test Icicles \\ \\ Student name: \\ Michael Herrera \\ Kevin Ngo \\ Alexander Tran \\ Franklin Hool \\ \\ Student ID: \\ 47378920 \\ 25092065 \\ 64197583 \\ 71351119 \\ \\ 
 EECS Department\\ Henry Samueli School of Engineering \\ University of California, Irvine \\ \\
-{February 14, 2016}} 
+{March 13, 2016}} 
 
 
 \date{}
@@ -58,18 +58,16 @@ EECS Department\\ Henry Samueli School of Engineering \\ University of Californi
 
 
 \section{Design}
- This lab continues off of the previous assignment's single-cycle MIPS processor. In addition to the instructions from the last assignment, the datapath now supports unconditional jumps, conditional branches and I-Type instructions.  
+ This lab continues off of the previous assignment's single-cycle MIPS processor. In addition to the instructions from the last assignment, the datapath now supports unconditional jumps, conditional branches, and pipeline implementations.  
 \\
 
 \textbf{Supported Instructions:}
 
-\textbf{Branches - }\texttt{BEQ, BNE, BLTZ, BGEZ, BLEZ, BGTZ, J, JR, JAL, JALR}
+\textbf{Branches - }\texttt{BEQ, J}
 
-\textbf{Memory operation - }\texttt{LB, LBU, LH, LHU, LW, SB, SH, SW, }
+\textbf{Memory operation - }\texttt{LW, SW}
 
-\textbf{Arithmetic - }\texttt{ADD, ADDU, ADDIU, SUB, SUBU, AND, ANDI, OR, ORI, XOR, XORI, NOR , LUI, SLT, SLTU, SLTIU}
-
-\textbf{Shift - }\texttt{SLL, SRL, SRA, SLLV, SRLV, SRAV}
+\textbf{Arithmetic - }\texttt{ADD, SUB, AND, OR, XOR, NOR, SLT}
 
 	\subsection{Processor}
 	The processor is the top-level block of the design. It is responsible for connecting the program counter, instruction memory, controller, register file, ALU, data memory, and all other supplementary components together in order to create the MIPS processor.  
@@ -90,10 +88,16 @@ EECS Department\\ Henry Samueli School of Engineering \\ University of Californi
 	The ALU performs various arithmetic and logic functions with its "A" and "B" inputs and sends the result to the output. To support the new I-Type instructions, a 2-to-1 multiplexer is added to the "B" input of the ALU. It is controlled by the controller, which decides whether to use the value from the register file or an immediate value in the instruction.
 	
 	\subsection{Data Memory}
-The data memory (RAM) is where data is written to and stored. It is a 512-word x 32-bit array whose size can be reconfigured at instantiation time using \texttt{dsize}.
+	The data memory (RAM) is where data is written to and stored. It is a 512-word x 32-bit array whose size can be reconfigured at instantiation time using \texttt{dsize}.
+		
+	\subsection{Hazard Unit}
+	The hazard unit controls whether to use the real control values from the controller or '0' when hazards are detected, such as data hazards, load-use hazard, and branch hazards. In the event of a hazard, depending on the type of hazard, the hazard unit will either stall the process or forward data. Data hazards, such as Read-After-Write or Write-After-Read, will cause forwarding in the pipeline implementation and stalling will occur in load-use hazard and branch hazards.
+		
+	\subsection{Pipeline Registers}
+	With each clock cycle, data from the pipeline register is read first and then data coming into the register is stored so that it is read in the next cycle, imitating a pipeline implementation. When stall occurs in the fetch stage or decode stage, the value in the pipeline register is preserved when a nop instruction is executed. 
 		
 \section{Testing}
-To test the MIPS processor, we first tested the individual components if possible. We tested the ALU with a testbench that had static inputs \textbf{A\_in} and \textbf{B\_in} that produced values for outputs \textbf{O\_out} and \textbf{Branch\_out}. The operations tested were \textbf{sll, srl, sra, sllv, srav, add, addu, sub, subu, and, or,  xor, nor, slt, sltu, lui, bltz, bgez, beq, bne, blez, bgtz}. 
+	To test the MIPS processor, we first tested the individual components if possible. We tested the ALU with a testbench that had static inputs \textbf{A\_in} and \textbf{B\_in} that produced values for outputs \textbf{O\_out} and \textbf{Branch\_out}. The operations tested were \textbf{sll, srl, sra, sllv, srav, add, addu, sub, subu, and, or,  xor, nor, slt, sltu, lui, bltz, bgez, beq, bne, blez, bgtz}. 
 
 \\ \\
 \begin{figure}[!ht]
@@ -176,4 +180,3 @@ Due to unknown circumstances, we were unable to obtain the critical path length 
 \end{figure}
 \\ \\
 \end{document}
-
