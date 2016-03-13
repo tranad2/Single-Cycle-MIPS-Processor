@@ -47,10 +47,10 @@
 
 \begin{document}
 \title{Organization of Digital Computer Lab \\ EECS112L/CSE 132L}
-\author{\textbf{Assignment 3 }\\ \textbf{Single-cycle MIPS - Complete} \\ \\
+\author{\textbf{Assignment 5 }\\ \textbf{Single-cycle MIPS - Complete} \\ \\
 Prepared by: Team Big Test Icicles \\ \\ Student name: \\ Michael Herrera \\ Kevin Ngo \\ Alexander Tran \\ Franklin Hool \\ \\ Student ID: \\ 47378920 \\ 25092065 \\ 64197583 \\ 71351119 \\ \\ 
 EECS Department\\ Henry Samueli School of Engineering \\ University of California, Irvine \\ \\
-{February 14, 2016}} 
+{March 13, 2016}} 
 
 
 \date{}
@@ -58,18 +58,16 @@ EECS Department\\ Henry Samueli School of Engineering \\ University of Californi
 
 
 \section{Design}
- This lab continues off of the previous assignment's single-cycle MIPS processor. In addition to the instructions from the last assignment, the datapath now supports unconditional jumps, conditional branches and I-Type instructions.  
+ This lab continues off of the previous assignment's single-cycle MIPS processor. In addition to the instructions from the last assignment, the datapath now supports unconditional jumps, conditional branches, and pipeline implementations.  
 \\
 
 \textbf{Supported Instructions:}
 
-\textbf{Branches - }\texttt{BEQ, BNE, BLTZ, BGEZ, BLEZ, BGTZ, J}
+\textbf{Branches - }\texttt{BEQ, J}
 
-\textbf{Memory operation - }\texttt{LB, LBU, LH, LHU, LW, SB, SH, SW, }
+\textbf{Memory operation - }\texttt{LW, SW}
 
-\textbf{Arithmetic - }\texttt{ADD, ADDU, ADDIU, SUB, SUBU, AND, ANDI, OR, ORI, XOR, XORI, NOR , LUI, SLT, SLTU, SLTIU}
-
-\textbf{Shift - }\texttt{SLL, SRL, SRA, SLLV, SRLV, SRAV}
+\textbf{Arithmetic - }\texttt{ADD, SUB, AND, OR, XOR, NOR, SLT}
 
 	\subsection{Processor}
 	The processor is the top-level block of the design. It is responsible for connecting the program counter, instruction memory, controller, register file, ALU, data memory, and all other supplementary components together in order to create the MIPS processor.  
@@ -99,7 +97,7 @@ EECS Department\\ Henry Samueli School of Engineering \\ University of Californi
 	With each clock cycle, data from the pipeline register is read first and then data coming into the register is stored so that it is read in the next cycle, imitating a pipeline implementation. When stall occurs in the fetch stage or decode stage, the value in the pipeline register is preserved when a nop instruction is executed. 
 		
 \section{Testing}
-To test the MIPS processor, we first tested the individual components if possible. We tested the ALU with a testbench that had static inputs \textbf{A\_in} and \textbf{B\_in} that produced values for outputs \textbf{O\_out} and \textbf{Branch\_out}. The operations tested were \textbf{sll, srl, sra, sllv, srav, add, addu, sub, subu, and, or,  xor, nor, slt, sltu, lui, bltz, bgez, beq, bne, blez, bgtz}. 
+	To test the MIPS processor, we first tested the individual components if possible. We tested the ALU with a testbench that had static inputs \textbf{A\_in} and \textbf{B\_in} that produced values for outputs \textbf{O\_out} and \textbf{Branch\_out}. The operations tested were \textbf{sll, srl, sra, sllv, srav, add, addu, sub, subu, and, or,  xor, nor, slt, sltu, lui, bltz, bgez, beq, bne, blez, bgtz}. 
 
 \\ \\
 \begin{figure}[!ht]
@@ -182,4 +180,3 @@ Due to unknown circumstances, we were unable to obtain the critical path length 
 \end{figure}
 \\ \\
 \end{document}
-
