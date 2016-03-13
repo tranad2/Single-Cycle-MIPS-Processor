@@ -42,5 +42,14 @@ END pipeDE;
 
 ARCHITECTURE arch_pipe of pipeDE IS
 BEGIN
-
+	PROCESS(clk, stallD)
+	BEGIN
+		IF stallD = '0' THEN
+			dataIO_out <= dataIO_temp;
+		ELSE IF clk'EVENT AND clk = '1' AND stallD = '0' THEN
+			dataIO_temp <= dataIO_in;
+		ELSE IF stallD = '1' THEN
+			dataIO_out <= (others=>'0');
+		END IF;
+	END PROCESS;
 END arch_pipe;

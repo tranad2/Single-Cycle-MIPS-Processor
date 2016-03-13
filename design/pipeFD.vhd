@@ -12,6 +12,16 @@ ENTITY pipeFD IS
 END pipeFD;
 
 ARCHITECTURE arch_pipe of pipeFD IS
+	SIGNAL dataIO_temp: STD_LOGIC_VECTOR(31 DOWNTO 0) := (others=>'0');
 BEGIN
-
+	PROCESS(clk, stallD)
+	BEGIN
+		IF stallD = '0' THEN
+			dataIO_out <= dataIO_temp;
+		ELSIF clk'EVENT AND clk = '1' AND stallD = '0' THEN
+			dataIO_temp <= dataIO_in;
+		ELSIF stallD = '1' THEN
+			dataIO_out <= (others=>'0');
+		END IF;
+	END PROCESS;
 END arch_pipe;
