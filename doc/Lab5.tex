@@ -63,7 +63,7 @@ EECS Department\\ Henry Samueli School of Engineering \\ University of Californi
 
 \textbf{Supported Instructions:}
 
-\textbf{Branches - }\texttt{BEQ, BNE, BLTZ, BGEZ, BLEZ, BGTZ, J, JR, JAL, JALR}
+\textbf{Branches - }\texttt{BEQ, BNE, BLTZ, BGEZ, BLEZ, BGTZ, J}
 
 \textbf{Memory operation - }\texttt{LB, LBU, LH, LHU, LW, SB, SH, SW, }
 
@@ -90,7 +90,13 @@ EECS Department\\ Henry Samueli School of Engineering \\ University of Californi
 	The ALU performs various arithmetic and logic functions with its "A" and "B" inputs and sends the result to the output. To support the new I-Type instructions, a 2-to-1 multiplexer is added to the "B" input of the ALU. It is controlled by the controller, which decides whether to use the value from the register file or an immediate value in the instruction.
 	
 	\subsection{Data Memory}
-The data memory (RAM) is where data is written to and stored. It is a 512-word x 32-bit array whose size can be reconfigured at instantiation time using \texttt{dsize}.
+	The data memory (RAM) is where data is written to and stored. It is a 512-word x 32-bit array whose size can be reconfigured at instantiation time using \texttt{dsize}.
+		
+	\subsection{Hazard Unit}
+	The hazard unit controls whether to use the real control values from the controller or '0' when hazards are detected, such as data hazards, load-use hazard, and branch hazards. In the event of a hazard, depending on the type of hazard, the hazard unit will either stall the process or forward data. Data hazards, such as Read-After-Write or Write-After-Read, will cause forwarding in the pipeline implementation and stalling will occur in load-use hazard and branch hazards.
+		
+	\subsection{Pipeline Registers}
+	With each clock cycle, data from the pipeline register is read first and then data coming into the register is stored so that it is read in the next cycle, imitating a pipeline implementation. When stall occurs in the fetch stage or decode stage, the value in the pipeline register is preserved when a nop instruction is executed. 
 		
 \section{Testing}
 To test the MIPS processor, we first tested the individual components if possible. We tested the ALU with a testbench that had static inputs \textbf{A\_in} and \textbf{B\_in} that produced values for outputs \textbf{O\_out} and \textbf{Branch\_out}. The operations tested were \textbf{sll, srl, sra, sllv, srav, add, addu, sub, subu, and, or,  xor, nor, slt, sltu, lui, bltz, bgez, beq, bne, blez, bgtz}. 
