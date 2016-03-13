@@ -24,13 +24,11 @@ entity hazard_unit is
 		RegToE:			in std_logic_vector(5 DOWNTO 0);
 		
 		--Logic Outputs
-		forwardAE: 		out std_logic_vector(1 DOWNTO 0);
-		forwardBE: 		out std_logic_vector(1 DOWNTO 0);
-		forwardAD:		out std_logic_vector(1 DOWNTO 0);
-		forwardBD:		out std_logic_vector(1 DOWNTO 0);
-		stallIF: 		out std_logic;
-		stallID: 		out std_logic;
-		flushE: 		out std_logic
+		forwardAE: 		out std_logic_vector(1 DOWNTO 0)	:= "00";
+		forwardBE: 		out std_logic_vector(1 DOWNTO 0)	:= "00";
+		stallIF: 		out std_logic						:= '0';
+		stallID: 		out std_logic						:= '0';
+		flushE: 		out std_logic						:= '0'
 	);
 end hazard_unit;
 
