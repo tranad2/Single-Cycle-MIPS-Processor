@@ -499,7 +499,7 @@ MW: pipeMW port map
 		
 
 	--ALU for ADD
-	temp3 <= SE_OUTPUT(29 DOWNTO 0)&"00";
+	temp3 <= SignImmD_O(29 DOWNTO 0)&"00";
 	ALU_2: alu port map
 		(
 		Func_in=>"100000",
