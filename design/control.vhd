@@ -5,7 +5,6 @@ ENTITY ControlUnit IS
 	PORT(
 		Opcode: IN STD_LOGIC_VECTOR (5 DOWNTO 0);
 		Func: IN STD_LOGIC_VECTOR (5 DOWNTO 0);
-		Reg_RT: IN STD_LOGIC;
 		ALUOp: OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
 
 		MemRead: OUT STD_LOGIC;
@@ -113,22 +112,8 @@ BEGIN
 			ALUOp <="101011";
 		elsif(Opcode="001111") then	--lui
 			ALUOp <="001111";
-		elsif(Opcode="000001") then	--bltz and bgez
-			if(Reg_RT='0') then	--bltz
-				ALUOp <="110000";
-			elsif(Reg_RT='1') then	--bgez
-				ALUOp <="110001";
-			end if;
 		elsif(Opcode="000100") then	--beq
 			ALUOp <="110010";
-		elsif(Opcode="000101") then	--bne
-			ALUOp <="110011";
-		elsif(Opcode="000110") then	--blez and bgtz
-			if(Reg_RT='0') then	--blez
-				ALUOp <="110100";
-			elsif(Reg_RT='1') then	--bgtz
-				ALUOp <="110101";
-			end if;
 		elsif(Opcode="100011") then --lw
 			ALUOp <="100001";
 		elsif(Opcode="101011") then --sw

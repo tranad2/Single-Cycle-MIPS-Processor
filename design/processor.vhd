@@ -4,7 +4,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 ENTITY processor IS
 	PORT (
 		ref_clk 	: IN std_logic;
-		reset 		: IN std_logic
+		reset 		: IN std_logic := '0'
 	);
 END processor;
 
@@ -23,8 +23,7 @@ component alu
             A_in            : IN std_logic_vector (31 DOWNTO 0);
             B_in            : IN std_logic_vector (31 DOWNTO 0);
             O_out           : OUT std_logic_vector (31 DOWNTO 0);
-            Branch_out      : OUT std_logic;
-            Jump_out        : OUT std_logic
+            Branch_out      : OUT std_logic
         );
 end component alu; 
 
@@ -225,8 +224,8 @@ component hazard_unit
 	);
 end component;
 
-signal we_1, Branch_out_1, Jump_out_1, MemRead_1, MemWrite_1, MTM_1, Branch_1, ALUSrc_1, RegDst_1, RegWrite_1:std_LOGIC;
-signal addr_1, dataIO_1, O_out_1,rdata_1_1, rdata_2_1,  dataO_1, PC_Output,Mult1_Output , Mult2_Output, SignImmD_O:std_logic_vector (31 DOWNTO 0);  
+signal Branch_out_1, MemRead_1, MemWrite_1, MTM_1, Branch_1, ALUSrc_1, RegDst_1, RegWrite_1:std_LOGIC;
+signal dataIO_1, O_out_1,rdata_1_1, rdata_2_1,  dataO_1, PC_Output,Mult1_Output , Mult2_Output, SignImmD_O:std_logic_vector (31 DOWNTO 0);  
 signal ALUOp_1: std_logic_vector (5 DOWNTO 0);
 signal Mult3_Output, WriteRegE_O: std_logic_vector (4 DOWNTO 0);
 --PIPEFD SIGNAL
@@ -251,6 +250,7 @@ signal stallIF_O, stallID_O, flushE_O: std_logic;
 	
 
 begin
+
 	--Control Unit	
 	Control: ControlUnit port map
 		(
@@ -262,7 +262,8 @@ begin
 		Branch=>Branch_1, 
 		ALUSrc=>ALUSrc_1, 
 		RegDst=>RegDst_1,
-	       	RegWrite=>RegWrite_1
+	    RegWrite=>RegWrite_1,
+		MemWrite=>MemWrite_1
 		);  
 	--Program Counter	
 	PC: program_counter port map
@@ -297,8 +298,7 @@ begin
 		A_in=>SrcAE_O, 
 		B_in=>SrcBE_O, 
 		O_out=>O_out_1, 
-		Branch_out=>Branch_out_1, 
-		Jump_out=>Jump_out_1
+		Branch_out=>Branch_out_1
 		);
 	--RAM
 	RAM_1: ram port map
