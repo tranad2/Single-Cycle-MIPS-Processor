@@ -8,8 +8,8 @@ ENTITY pipeEM IS
 		--Control--
 		RegWriteE: IN STD_LOGIC;
 		MemtoRegE: IN STD_LOGIC;
-		WriteRegE IN STD_LOGIC;
-		MemWriteE IN STD_LOGIC;
+		WriteRegE: IN STD_LOGIC;
+		MemWriteE: IN STD_LOGIC;
 		--Data--
 		WriteDataE: IN STD_LOGIC_VECTOR(31 DOWNTO 0);
 		ALUInE: IN STD_LOGIC_VECTOR(31 DOWNTO 0);

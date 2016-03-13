@@ -39,7 +39,7 @@ BEGIN
 		
 		--Store value--
 		IF clk'EVENT AND clk = '1' THEN
-			ReadData_temp <= WriteDataM;
+			ReadData_temp <= ReadDataM;
 			ALU_temp <= ALUInM;
 			RegWrite_temp <= RegWriteM;
 			MemtoReg_temp <= MemtoRegM;
