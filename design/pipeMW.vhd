@@ -24,9 +24,9 @@ END pipeMW;
 ARCHITECTURE arch_pipe of pipeMW IS
 SIGNAL ReadData_temp: STD_LOGIC_VECTOR(31 DOWNTO 0) := (others=>'0');
 SIGNAL ALU_temp: STD_LOGIC_VECTOR(31 DOWNTO 0) := (others=>'0');
-SIGNAL RegWrite_temp: STD_LOGIC := 0;
-SIGNAL MemtoReg_temp: STD_LOGIC := 0;
-SIGNAL WriteReg_temp: STD_LOGIC := 0;
+SIGNAL RegWrite_temp: STD_LOGIC := '0';
+SIGNAL MemtoReg_temp: STD_LOGIC := '0';
+SIGNAL WriteReg_temp: STD_LOGIC := '0';
 BEGIN
 	PROCESS(clk)
 	BEGIN
