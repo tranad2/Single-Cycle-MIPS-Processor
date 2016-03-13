@@ -31,7 +31,7 @@ SIGNAL MemtoReg_temp: STD_LOGIC := 0;
 SIGNAL WriteReg_temp: STD_LOGIC := 0;
 SIGNAL MemWrite_temp: STD_LOGIC := 0;
 BEGIN
-	PROCESS(clk, stallD)
+	PROCESS(clk)
 	BEGIN
 		--Read stored value--
 		WriteDataM <= WriteData_temp;

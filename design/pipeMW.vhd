@@ -22,6 +22,28 @@ ENTITY pipeMW IS
 END pipeMW;
 
 ARCHITECTURE arch_pipe of pipeMW IS
+SIGNAL ReadData_temp: STD_LOGIC_VECTOR(31 DOWNTO 0) := (others=>'0');
+SIGNAL ALU_temp: STD_LOGIC_VECTOR(31 DOWNTO 0) := (others=>'0');
+SIGNAL RegWrite_temp: STD_LOGIC := 0;
+SIGNAL MemtoReg_temp: STD_LOGIC := 0;
+SIGNAL WriteReg_temp: STD_LOGIC := 0;
 BEGIN
-
+	PROCESS(clk)
+	BEGIN
+		--Read stored value--
+		ReadDataW <= ReadData_temp;
+		ALUOutW <= ALU_temp;
+		RegWriteW <= RegWrite_temp;
+		MemtoRegW <= MemtoReg_temp;
+		WriteRegW <= WriteReg_temp;
+		
+		--Store value--
+		IF clk'EVENT AND clk = '1' THEN
+			ReadData_temp <= WriteDataM;
+			ALU_temp <= ALUInM;
+			RegWrite_temp <= RegWriteM;
+			MemtoReg_temp <= MemtoRegM;
+			WriteReg_temp <= WriteRegM;
+		END IF;
+	END PROCESS;
 END arch_pipe;
