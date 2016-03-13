@@ -5,11 +5,14 @@ USE IEEE.NUMERIC_STD.ALL;
 ENTITY pipeMW IS
 	PORT (
 		clk: IN STD_LOGIC;
+		--Control--
 		RegWriteM: IN STD_LOGIC;
 		MemtoRegM: IN STD_LOGIC;
 		WriteRegM: IN STD_LOGIC;
+		--Data
 		ReadDataM: IN STD_LOGIC_VECTOR(31 DOWNTO 0);
 		ALUInM: IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+		--Outputs--
 		RegWriteW: OUT STD_LOGIC;
 		MemtoRegW: OUT STD_LOGIC;
 		WriteRegW: OUT STD_LOGIC;
