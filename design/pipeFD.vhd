@@ -18,7 +18,8 @@ BEGIN
 	BEGIN
 		IF stallD = '0' THEN
 			dataIO_out <= dataIO_temp;
-		ELSIF clk'EVENT AND clk = '1' AND stallD = '0' THEN
+		END IF;
+		IF clk'EVENT AND clk = '1' AND stallD = '0' THEN
 			dataIO_temp <= dataIO_in;
 		ELSIF stallD = '1' THEN
 			dataIO_out <= (others=>'0');
